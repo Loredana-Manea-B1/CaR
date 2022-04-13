@@ -6,10 +6,9 @@
     font-family: 'DM Sans', sans-serif;
 }*/
 
-html{
+html {
     height: 100%;
 }
-
 
 body {
     margin: 0%;
@@ -19,29 +18,21 @@ body {
     padding: 0;
 }
 
-
-main{
+main {
     height: 100%;
 }
-
-
 
 html,
 body {
     position: relative;
-   
 }
-
-
-
 
 *:before,
 *:after {
     box-sizing: border-box;
 }
 
-
-.desc{
+.desc {
     margin: auto;
     background: #FFECD1;
     opacity: 1;
@@ -50,12 +41,12 @@ body {
     min-width: 10px;
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 4%;
+    padding-bottom: 2%;
     justify-content: center;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.desc p{
+.desc p {
     margin-top: 3%;
     text-align: center;
     font-size: 30px;
@@ -66,6 +57,7 @@ body {
 }
 
 .titlu_pagina {
+    padding-top: 2%;
     margin-top: 0%;
     text-align: center;
     font-size: 50px;
@@ -86,6 +78,46 @@ body {
     flex-wrap: wrap;
     padding-bottom: 4%;
     font-family: 'DM Sans', sans-serif;
+}
+
+.info_cursa {
+    background-color: #FFECD1;
+    width: 480px;
+    height: 350px;
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    justify-content: flex-end;
+}
+
+.text1 {
+    width: 450px;
+    height: 50px;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    justify-content: space-evenly;
+}
+
+.data_cursa {
+    margin: auto;
+    text-align: center;
+    color: #001524;
+    font-size: 15px;
+    max-width: 300px;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 1%;
+}
+
+.data_limita {
+    margin: auto;
+    text-align: center;
+    color: #001524;
+    font-size: 15px;
+    font-weight: bold;
+    max-width: 300px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .tichet {
@@ -111,7 +143,7 @@ body {
     justify-content: space-evenly;
 }
 
-.concurent1:hover{
+.concurent1:hover {
     background-color: #ffa14a;
 }
 
@@ -126,7 +158,7 @@ body {
     justify-content: space-evenly;
 }
 
-.concurent2:hover{
+.concurent2:hover {
     background-color: #a03815;
 }
 
@@ -156,18 +188,16 @@ body {
     justify-content: space-evenly;
 }
 
-
-img{
+img {
     height: 100%;
     width: 100%;
     object-fit: contain;
 }
 
-
-.text{
+.text {
     width: 260px;
     height: 50px;
-    margin-top:1%;
+    margin-top: 1%;
     margin-bottom: 2%;
     margin-left: 2%;
     margin-right: 2%;
@@ -183,7 +213,7 @@ img{
     font-weight: bold;
     max-width: 200px;
     font-family: 'DM Sans', sans-serif;
-  }
+}
 
 .rata {
     margin: auto;
@@ -193,8 +223,7 @@ img{
     font-weight: bold;
     max-width: 200px;
     font-family: 'Source Sans Pro', sans-serif;
-  }
-
+}
 
 .modal-plata {
     background-color: rgba(100, 100, 100, 0.5);
@@ -205,7 +234,7 @@ img{
     justify-content: center;
     align-items: stretch;
     /*display: none;*/
-  }
+}
 
 .continut {
     position: sticky;
@@ -217,9 +246,9 @@ img{
     flex-direction: column;
     align-content: center;
     justify-content: space-evenly;
-  }
+}
 
-.info_pisica{
+.info_pisica {
     margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
@@ -227,22 +256,21 @@ img{
     height: 400px;
     background-color: #e06506;
     opacity: 1;
-    top:0;
-    
+    top: 0;
 }
 
-.suma_plata{
+.suma_plata {
     margin-left: auto;
     margin-right: auto;
     width: 500px;
     height: 200px;
     background-color: #15616D;
-    top:0;
+    top: 0;
     align-content: center;
     justify-content: space-evenly;
 }
 
-.img_modal{
+.img_modal {
     background-color: #e06506;
     width: 300px;
     height: 300px;
@@ -254,19 +282,18 @@ img{
     justify-content: space-evenly;
 }
 
-
-.nume_modal{
-        padding-top: 10px;
-        margin: auto;
-        text-align: center;
-        color: #001524;
-        font-size: 25px;
-        font-weight: bold;
-        max-width: 200px;
-        font-family: 'DM Sans', sans-serif;
+.nume_modal {
+    padding-top: 10px;
+    margin: auto;
+    text-align: center;
+    color: #001524;
+    font-size: 25px;
+    font-weight: bold;
+    max-width: 200px;
+    font-family: 'DM Sans', sans-serif;
 }
 
-.rata_modal{
+.rata_modal {
     margin: auto;
     text-align: center;
     color: #001524;
@@ -276,7 +303,7 @@ img{
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.formular{
+.formular {
     margin-top: 5%;
     margin-bottom: 3%;
     height: 50px;
@@ -288,7 +315,7 @@ img{
     justify-content: space-evenly;
 }
 
-.formular label{
+.formular label {
     padding-top: 10px;
 }
 
@@ -310,14 +337,9 @@ img{
     cursor: pointer;
     color: #F1F9FF;
     border-radius: 15px;
-  }
-  
-  .butoane:hover {
+}
+
+.butoane:hover {
     background-color: #15616D;
     color: #F1F9FF;
-  }
-  
-
-
-
-
+}
