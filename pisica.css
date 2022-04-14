@@ -263,3 +263,69 @@ img {
     max-width: 200px;
     font-family: 'DM Sans', sans-serif;
 }
+
+@media screen and (max-width: 1500px) {
+    .istoric {
+        width: fit-content;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .pisi {
+        position: relative;
+    }
+    .istoric {
+        width: 98.214vw;
+    }
+    .info_cursa {
+        width: 600px;
+        height: 460px;
+    }
+    .tichet {
+        background-color: #FFFFFF;
+        width: 600px;
+        height: 430px;
+    }
+    .concurent1 {
+        background-color: #FF7D00;
+        width: 300px;
+        height: 430px;
+    }
+    .concurent2 {
+        background-color: #78290F;
+        width: 300px;
+        height: 430px;
+    }
+    .img1 {
+        width: 300px;
+        height: 300px;
+    }
+    .img2 {
+        width: 300px;
+        height: 300px;
+    }
+    .text {
+        width: 260px;
+        height: 40px;
+    }
+    .nume {
+        font-size: 30px;
+        max-width: 200px;
+    }
+    .data_cursa {
+        margin: auto;
+        text-align: center;
+        color: #001524;
+        font-size: 20px;
+        max-width: 300px;
+        font-family: 'DM Sans', sans-serif;
+        margin-bottom: 1%;
+    }
+    .castigator {
+        margin: auto;
+        text-align: center;
+        color: #001524;
+        font-size: 20px;
+        max-width: 300px;
+    }
+}
