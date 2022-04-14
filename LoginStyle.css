@@ -1,0 +1,235 @@
+body {
+    background: #FFECD1;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+.screen {
+    background: linear-gradient(90deg, #FF7D00, #78290F);
+    position: relative;
+    height: 700px;
+    width: 500px;
+    box-shadow: 0px 0px 24px #78290F;
+}
+
+.screen__content {
+    z-index: 1;
+    position: relative;
+    height: 90%;
+}
+
+.screen__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+}
+
+.screen__background__shape {
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.screen__background__shape1 {
+    height: 520px;
+    width: 520px;
+    background: #fff;
+    top: -50px;
+    right: 120px;
+    border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+    height: 220px;
+    width: 220px;
+    background: #78290F;
+    top: -172px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.screen__background__shape3 {
+    height: 540px;
+    width: 240px;
+    background: linear-gradient(270deg, #78290F, #FF7D00);
+    top: -24px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.screen__background__shape4 {
+    height: 500px;
+    width: 200px;
+    background: #FF7D00;
+    top: 420px;
+    right: 50px;
+    border-radius: 60px;
+}
+
+.login {
+    width: 400px;
+    padding: 30px;
+    padding-top: 150px;
+}
+
+.login__field {
+    padding: 30px 0px;
+    position: relative;
+}
+
+.login__input {
+    border: none;
+    border-bottom: 2px solid #d1d1d4;
+    background: none;
+    padding: 20px;
+    padding-left: 30px;
+    font-weight: 1200;
+    font-size: 20px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+    outline: none;
+    border-bottom-color: #001524;
+}
+
+.login__submit {
+    background: #fff;
+    font-size: 20px;
+    margin-top: 40px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #d4d3e8;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #001524;
+    box-shadow: 0px 2px 2px #001524;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+    border-color: #001524;
+    outline: none;
+}
+
+@media screen and (max-width: 1500px) {
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40vh;
+    }
+    .screen {
+        background: linear-gradient(90deg, #FF7D00, #78290F);
+        position: relative;
+        height: 600px;
+        width: 400px;
+        box-shadow: 0px 0px 24px #78290F;
+    }
+    .login {
+        width: 320px;
+        padding: 40px;
+        padding-top: 155px;
+    }
+    .login__submit {
+        background: #fff;
+        font-size: 14px;
+        margin-top: 30px;
+        padding: 16px 20px;
+        border-radius: 26px;
+        border: 1px solid #d4d3e8;
+        text-transform: uppercase;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        color: #001524;
+        box-shadow: 0px 2px 2px #001524;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .screen__content {
+        z-index: 1;
+        position: relative;
+        height: 90%;
+    }
+    .screen__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0);
+    }
+    .screen__background__shape {
+        transform: rotate(45deg);
+        position: absolute;
+    }
+    .screen__background__shape1 {
+        height: 520px;
+        width: 520px;
+        background: #fff;
+        top: -50px;
+        right: 120px;
+        border-radius: 0 72px 0 0;
+    }
+    .screen__background__shape2 {
+        height: 220px;
+        width: 220px;
+        background: #78290F;
+        top: -172px;
+        right: 0;
+        border-radius: 32px;
+    }
+    .screen__background__shape3 {
+        height: 540px;
+        width: 190px;
+        background: linear-gradient(270deg, #78290F, #FF7D00);
+        top: -24px;
+        right: 0;
+        border-radius: 32px;
+    }
+    .screen__background__shape4 {
+        height: 400px;
+        width: 200px;
+        background: #FF7D00;
+        top: 420px;
+        right: 50px;
+        border-radius: 60px;
+    }
+    .login__field {
+        padding: 20px 0px;
+        position: relative;
+    }
+    .login__input {
+        border: none;
+        border-bottom: 2px solid #d1d1d4;
+        background: none;
+        padding: 10px;
+        padding-left: 24px;
+        font-weight: 700;
+        font-size: small;
+        width: 75%;
+        transition: 0.2s;
+    }
+}
