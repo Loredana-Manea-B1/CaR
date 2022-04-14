@@ -237,7 +237,7 @@ img {
 }
 
 .continut {
-    position: sticky;
+    position: fixed;
     margin-top: 2%;
     width: 600px;
     height: 600px;
