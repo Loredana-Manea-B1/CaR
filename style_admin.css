@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Source+Sans+Pro:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    
+    background-color: #FFECD1;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    width: 80%;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+}
+
+.button {
+    display: flex;
+    justify-content: right;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 50px;
+    font-size: 1.5rem;
+    position: relative;
+    margin: 32px;
+    background-color: #15616D;
+    color: #FFECD1;
+    border-radius: 30px;
+    transition: trasform 0.4s ease;
+}
+
+.btn:hover {
+    background-color: #001524;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .btn {
+      display: block;
+    }
+  }
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    color: #15616D;
+}
+
+p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #001524;
+}
+
+
+th {
+    font-family: 'DM Sans', sans-serif;
+    color: #FF7D00;
+    font-size: 1.5rem;
+
+}
+
+td {
+    font-family:'Source Sans Pro', sans-serif;
+    color: #78290F;
+    font-size: 1.5rem;
+}
+
+
+table {
+    margin-left: auto; 
+    margin-right: auto;
+    width: 60%;
+    border-collapse: collapse;
+  }
+
+input[type=submit] {
+      background-color: #FF7D00;
+      color: #FFECD1;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1rem;
+      margin-left: 10px;
+      padding: 5px 10px;
+  }
+
+input[type=text] {
+    background-color: #15616D;
+    color:#FFECD1;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bolder;
+    font-size: 1rem;
+    padding: 5px;
+
+}
