@@ -21,69 +21,17 @@ body {
 }
 
 .screen {
-    background: linear-gradient(90deg, #FF7D00, #78290F);
+    background: linear-gradient(90deg, #FFECD1, #ffecd193);
     position: relative;
     height: 700px;
     width: 500px;
-    box-shadow: 0px 0px 24px #78290F;
+    box-shadow: 0px 0px 24px #70635e;
 }
 
 .screen__content {
     z-index: 1;
     position: relative;
     height: 90%;
-}
-
-.screen__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    -webkit-clip-path: inset(0 0 0 0);
-    clip-path: inset(0 0 0 0);
-}
-
-.screen__background__shape {
-    transform: rotate(45deg);
-    position: absolute;
-}
-
-.screen__background__shape1 {
-    height: 520px;
-    width: 520px;
-    background: #fff;
-    top: -50px;
-    right: 120px;
-    border-radius: 0 72px 0 0;
-}
-
-.screen__background__shape2 {
-    height: 220px;
-    width: 220px;
-    background: #78290F;
-    top: -172px;
-    right: 0;
-    border-radius: 32px;
-}
-
-.screen__background__shape3 {
-    height: 540px;
-    width: 240px;
-    background: linear-gradient(270deg, #78290F, #FF7D00);
-    top: -24px;
-    right: 0;
-    border-radius: 32px;
-}
-
-.screen__background__shape4 {
-    height: 500px;
-    width: 200px;
-    background: #FF7D00;
-    top: 420px;
-    right: 50px;
-    border-radius: 60px;
 }
 
 .login {
@@ -109,15 +57,8 @@ body {
     transition: 0.2s;
 }
 
-.login__input:active,
-.login__input:focus,
-.login__input:hover {
-    outline: none;
-    border-bottom-color: #001524;
-}
-
 .login__submit {
-    background: #fff;
+    background: #5f8b928f;
     font-size: 20px;
     margin-top: 40px;
     padding: 16px 20px;
@@ -181,52 +122,6 @@ body {
         z-index: 1;
         position: relative;
         height: 90%;
-    }
-    .screen__background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-        -webkit-clip-path: inset(0 0 0 0);
-        clip-path: inset(0 0 0 0);
-    }
-    .screen__background__shape {
-        transform: rotate(45deg);
-        position: absolute;
-    }
-    .screen__background__shape1 {
-        height: 520px;
-        width: 520px;
-        background: #fff;
-        top: -50px;
-        right: 120px;
-        border-radius: 0 72px 0 0;
-    }
-    .screen__background__shape2 {
-        height: 220px;
-        width: 220px;
-        background: #78290F;
-        top: -172px;
-        right: 0;
-        border-radius: 32px;
-    }
-    .screen__background__shape3 {
-        height: 540px;
-        width: 190px;
-        background: linear-gradient(270deg, #78290F, #FF7D00);
-        top: -24px;
-        right: 0;
-        border-radius: 32px;
-    }
-    .screen__background__shape4 {
-        height: 400px;
-        width: 200px;
-        background: #FF7D00;
-        top: 420px;
-        right: 50px;
-        border-radius: 60px;
     }
     .login__field {
         padding: 20px 0px;
