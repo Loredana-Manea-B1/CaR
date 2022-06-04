@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Source+Sans+Pro:wght@300&display=swap');
+h1 {
+    text-align: center;
+}
+
+.optiuni {
+    font-size: 1.3vw;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.adaugare {
+    height: 7vw;
+    margin-bottom: 3vw;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.add {
+    height: 7vw;
+    margin-bottom: 3vw;
+    max-width: 7vw;
+    background-image: url("../poze_tw/add_circle.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    width: 100%;
+}
+
+.cautare {
+    padding-bottom: 3vw;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.cautare>p {
+    padding-right: 1vw;
+}
+
+table {
+    font-family: 'DM Sans', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 0.2vw;
+    background-color: #FFECD1;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 0.2vw;
+    background-color: #FF7D00;
+}
+
+.text {
+    font-family: 'Source Sans Pro', sans-serif;
+    word-break: break-all;
+}
+
+.actiune {
+    align-content: center;
+}
+
+.modifica {
+    font-size: 1.7vw;
+    height: 7vw;
+    margin-bottom: 3vw;
+    max-width: 100%;
+    background-image: url("../poze_tw/edit.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    width: 100%;
+}
+
+.sterge {
+    font-size: 1.7vw;
+    height: 7vw;
+    max-width: 100%;
+    background-image: url("../poze_tw/delete.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    width: 100%;
+}
+
+@media screen and (max-width:1227px) {
+    .modifica {
+        margin-bottom: 7vw;
+        width: 110%;
+    }
+    .sterge {
+        width: 110%;
+    }
+}
+
+@media screen and (max-width:900px) {
+    th {
+        word-break: break-all;
+    }
+    .modifica {
+        margin-bottom: 5vw;
+        width: 220%;
+    }
+    .sterge {
+        width: 220%;
+    }
+    table {
+        font-size: 16px;
+    }
+    .optiuni {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    table {
+        font-size: 15px;
+    }
+    .optiuni {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    table {
+        font-size: 14px;
+    }
+    .optiuni {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <link rel="stylesheet" href="../styles/listare_pisici.css">
+    <title>Listare Pisici</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1>Lista pisici</h1>
+    <div class="optiuni">
+        <div class="adaugare">
+            <p>Adauga pisica</p>
+            <a class="add"></a>
+        </div>
+        <div class="cautare">
+            <p>Cauta pisica: </p>
+            <input type="text" placeholder="Search..">
+        </div>
+    </div>
+    <table id="lista_pisici">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nume
+            </th>
+            <th>
+                Descriere
+            </th>
+            <th>
+                Rata castig
+            </th>
+            <th>
+                Imagine
+            </th>
+            <th>
+                Actiune
+            </th>
+        </tr>
+        <tr>
+            <td class="text"> Id </td>
+            <td class="text">Tip</td>
+            <td class="text">Nume</td>
+            <td class="text">Descriere</td>
+            <td class="text">Imagine</td>
+            <td class="actiune">
+                <a class="modifica" href="admin_form_pisici.php?id=${produs.id}"></a>
+                <a class="sterge"></a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
