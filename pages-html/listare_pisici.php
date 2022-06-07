@@ -1,19 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 
 <head>
     <link rel="stylesheet" href="../styles/listare_pisici.css">
+    <?php include "../php/db-conn.php"; ?>
     <title>Listare Pisici</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
+    
 
     <h1>Lista pisici</h1>
     <div class="optiuni">
         <div class="adaugare">
             <p>Adauga pisica</p>
-            <a class="add" href="pisica_form.html"></a>
+            <a class="add" href="pisica_form.php"></a>
         </div>
         <div class="cautare">
             <p>Cauta pisica: </p>
@@ -32,7 +35,7 @@
                 Descriere
             </th>
             <th>
-                Rata castig
+                Rata
             </th>
             <th>
                 Imagine
@@ -41,17 +44,23 @@
                 Actiune
             </th>
         </tr>
+        <?php
+        foreach($test as $p){
+
+        echo"
         <tr>
-            <td class="text"> Id </td>
-            <td class="text">Tip</td>
-            <td class="text">Nume</td>
-            <td class="text">Descriere</td>
-            <td class="text">Imagine</td>
-            <td class="actiune">
-                <a class="modifica" href="admin_form_pisici.php?id=${produs.id}"></a>
-                <a class="sterge"></a>
+            <td class='text'>".$p->getId()."</td>
+            <td class='text'>".$p->nume."</td>
+            <td class='text'>".$p->descriere."</td>
+            <td class='text'>rata</td>
+            <td class='text'>".$p->poza."</td>
+            <td class='actiune'>
+                <a class='modifica' href='pisica_form.php'></a>
+                <a class='sterge'></a>
             </td>
-        </tr>
+        </tr>";
+    }
+        ?>
     </table>
 
 </body>
