@@ -20,154 +20,23 @@
             <a href="#" class="btn">Log out</a>
         </div>
     </header>
+    <div>
+        <h3>Admin</h3>
+    </div>
     <section>
-        <div class="curse">
-            <h3>Editare curse viitoare</h3>
-            <br>
-            <table id = "edit_curse">
-                <tr>
-                    <th>Numar cursa</th>
-                    <th>Concurenti</th>
-                    <th>Data limita pariu</th>
-                    <th>Data cursei</th>
-                  </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tomi, Hector, Rica</td>
-                    <td>05.05.2022</td>
-                    <td>10.05.2022</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Hector, Rica</td>
-                    <td>01.06.2022</td>
-                    <td>06.06.2022</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Tom, Peatty</td>
-                    <td>25.09.2022</td>
-                    <td>30.09.2022</td>
-                </tr>
-            </table>
+        <div class="menu">
+            <a href="lista_utiliztori.html" class="btn2">Utilizatori</a>
         </div>
-        <div >
-            <h3>Stergere Pariu</h3>
-            <br>
-            <p>Introdu codul pariului: </p>
-            <form action="/admin.html" method="post" enctype="text/plain">
-                <input type="text" name="cod">
-                <input type="submit" value="Sterge">
-                </form>
+        <div class="menu">
+            <a href="listare_pisici.html" class="btn2">Pisici</a>
         </div>
-        
-        <div>
-            <h3>Baza de date</h3>
-            <br>
-            <table>
-                <tr>
-                    <th>Nr.</th>
-                    <th>Username</th>
-                    <th>Mail</th>
-                    <th>Parola</th>
-                    <th>Istoric pariuri efectuate</th>
-                </tr>
-                <tr>
-                    <td>1001</td>
-                    <td>anamaria</td>
-                    <td>anamaria@mail.com</td>
-                    <td>*****</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>1002</td>
-                    <td>danielursu</td>
-                    <td>danielursu@yandex.com</td>
-                    <td>*****</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>1003</td>
-                    <td>lauraelena10</td>
-                    <td>lauraelena@yahoo.com</td>
-                    <td>*****</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>1004</td>
-                    <td>alinacristina12</td>
-                    <td>alinacristina12@gmail.com</td>
-                    <td>*****</td>
-                    <td>4</td>
-                </tr>
-            </table>
+        <div class="menu">
+            <a href="lista_curse.html" class="btn2">Curse</a>
+        </div>
+        <div class="menu">
+            <a href="lista_pariuri.html" class="btn2">Pariuri</a>
         </div>
     </section>
-    <script>
-        var table = document.getElementById('edit_curse');
-        var cells = table.getElementsByTagName('td');
-
-        for (var i=0; i < cells.length; i++)
-            {
-                cells[i].onclick = function()
-                {
-                    if(this.hasAttribute('data-clicked'))
-                    {
-                        return;
-                    }
-                    this.setAttribute('data-clicked', 'yes')
-                    this.setAttribute('data-text', this.innerHTML);
-
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'text');
-                    input.value = this.innerHTML;
-                    input.style.width = this.offsetWidth - (this.clientLeft * 2) + "px";
-                    input.style.height = this.offsetHeight - (this.clientTop *2) + "px";
-                    input.style.border = "0px";
-                    input.style.fontFamily = "inherit";
-                    input.style.fontSize = "inherit";
-                    input.style.textAlign = "inherit";
-                    input.style.backgroundColor = "inherit";
-                    input.onblur = function()
-                        {
-                            var td = input.parentElement;
-                            var orig_text = input.parentElement.getAttribute('data-text');
-                            var current_text = this.value;
-
-                            if (orig_text != current_text)
-                            {
-                                //daca sunt schimbari in tabel
-                                td.removeAttribute('data-clicked');
-                                td.removeAttribute('data-text');
-                                td.innerHTML = current_text;
-                                td.style.cssText = 'padding: 1px';
-                                console.log(orig_text + ' este schimbat cu ' + current_text);
-                            }
-                            else
-                            {
-                                //daca sunt schimbari in tabel
-                                td.removeAttribute('data-clicked');
-                                td.removeAttribute('data-text');
-                                td.innerHTML = current_text;
-                                td.style.cssText = 'padding: 1px';
-                                console.log('Nu exista schimbari in tabel');
-                            }
-                        }
-               
-                    input.onkeypress = function()
-                    {
-                        if (event.keyCode == 0)
-                            this.blur();
-                    }
-                    this.innerHTML = '';
-                    this.style.cssText = 'padding: 0px 0px';
-                    this.append(input);
-                    this.firstElementChild.select();
-
-               }
-            }
-
-    </script>
 
 </body>
 </html>

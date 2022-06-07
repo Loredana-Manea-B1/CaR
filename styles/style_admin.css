@@ -38,6 +38,7 @@ header {
     font-family: 'DM Sans', sans-serif;
 }
 
+
 .btn {
     text-decoration: none;
     padding: 10px 50px;
@@ -50,10 +51,25 @@ header {
     transition: trasform 0.4s ease;
 }
 
+.btn2 {
+    font-size: 1.5rem;
+    position: relative;
+    background-color: rgb(255, 125, 0);
+    color: rgb(255, 236, 209);
+    text-decoration: none;
+    padding: 10px 50px;
+    border-radius: 30px;
+    transition: trasform 0.4s ease 0s;
+}
+
 .btn:hover {
     background-color: #001524;
 }
 
+.menu {
+    justify-content: center;
+    font-family: "DM Sans", sans-serif;
+}
 
 
 @media screen and (max-width: 500px) {
@@ -67,59 +83,19 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 50%;
     text-align: center;
+    margin-top: 50px;
 }
 
-h3 {
+div h3 {
     font-family: 'DM Sans', sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     color: #15616D;
-}
-
-p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    color: #001524;
+    display: flex;
+    justify-content: center;
 }
 
 
-th {
-    font-family: 'DM Sans', sans-serif;
-    color: #FF7D00;
-    font-size: 1.5rem;
-
-}
-
-td {
-    font-family:'Source Sans Pro', sans-serif;
-    color: #78290F;
-    font-size: 1.5rem;
-}
 
 
-table {
-    margin-left: auto; 
-    margin-right: auto;
-    width: 60%;
-    border-collapse: collapse;
-  }
-
-input[type=submit] {
-      background-color: #FF7D00;
-      color: #FFECD1;
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: 1rem;
-      margin-left: 10px;
-      padding: 5px 10px;
-  }
-
-input[type=text] {
-    background-color: #15616D;
-    color:#FFECD1;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: bolder;
-    font-size: 1rem;
-    padding: 5px;
-
-}
