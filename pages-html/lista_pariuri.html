@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <link rel="stylesheet" href="../styles/listare_pisici.css">
+    <title>Lista pariuri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1>Lista Pariuri</h1>
+    <div class="optiuni">
+        <p>Adauga Pariu</p>
+        <a class="add" href="pisica_form.html"></a>
+    </div>
+        <div class="cautare">
+            <p>Cauta Pariu: </p>
+            <input type="text" placeholder="Search..">
+        </div>
+    </div>
+    <table id="lista_pariuri">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Pisica
+            </th>
+            <th>
+                Cursa
+            </th>
+            <th>
+                Actiune
+            </th>
+        </tr>
+        <tr>
+            <td class="text"> Id </td>
+            <td class="text">Id_pisica</td>
+            <td class="text">Id_cursa</td>
+            <td class="actiune">
+                <a class="modifica" href="admin_form_pisici.php?id=${produs.id}"></a>
+                <a class="sterge"></a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

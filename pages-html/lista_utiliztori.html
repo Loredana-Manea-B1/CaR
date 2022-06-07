@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <link rel="stylesheet" href="../styles/listare_pisici.css">
+    <title>Listare Utilizatori</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1>Lista Utilizatori</h1>
+    <div class="optiuni">
+        <div class="cautare">
+            <p>Cauta Utilizator: </p>
+            <input type="text" placeholder="Search..">
+        </div>
+    </div>
+    <table id="lista_utilizatori">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nume
+            </th>
+            <th>
+                Parola
+            </th>
+            <th>
+                Pariu
+            </th>
+            <th>
+                Admin
+            </th>
+            <th>
+                Actiune
+            </th>
+        </tr>
+        <tr>
+            <td class="text"> Id </td>
+            <td class="text">Nume</td>
+            <td class="text">***</td>
+            <td class="text">Pariu</td>
+            <td class="text">da/nu</td>
+            <td class="actiune">
+                <a class="modifica" href="admin_form_pisici.php?id=${produs.id}"></a>
+                <a class="sterge"></a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
