@@ -7,9 +7,9 @@ require_once '../php/pisici_insert.php';
 
 <head>
     <link rel="stylesheet" href="../styles/pisica_form.css">
-
+    <link rel="stylesheet" href="../styles/general.css">
     <title> Admin </title>
-    <script src="../js/fetch.js"></script>
+    <script src="../js/fetch_form_pisica.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 </head>
@@ -60,8 +60,10 @@ require_once '../php/pisici_insert.php';
             <input type="submit" id="submit" name="submit" value="<?php echo isset($_GET['id']) ? 'Editează' : 'Adaugă' ?>">
         </div>
     </form>
-    <button onclick="location.href = 'listare_pisici.php';">Listare</button>
-    <button onclick="location.href = 'index.html';">Home</button>
+    <div class="butoane">
+    <button class="btn" onclick="location.href = 'listare_pisici.php';">Listare</button>
+    <button class="btn" onclick="location.href = 'index.html';">Home</button>
+                                                                                            </div>
 </body>
 
 </html>

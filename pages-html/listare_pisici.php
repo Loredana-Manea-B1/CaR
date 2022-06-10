@@ -4,6 +4,7 @@
 
 <head>
     <link rel="stylesheet" href="../styles/listare_pisici.css">
+    <link rel="stylesheet" href="../styles/header.css">
     <?php include "../php/db-conn.php"; 
     ?>
 
