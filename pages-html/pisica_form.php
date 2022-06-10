@@ -36,19 +36,18 @@ require_once '../php/pisici_insert.php';
     <form method="POST" enctype="multipart/form-data">
         <div class="form-data">
             <label for="nume_pisica">Inserează numele pisicii</label><br>
-            <input type="text" name="nume_pisica" id="nume_pisica" placeholder="ex. Bella"><?php
+            <input type="text" name="nume_pisica" id="nume_pisica" placeholder="ex. Bella"<?php
                                                                                                 if (isset($_GET["id"])) {
                                                                                                     echo 'value="' . $_editPisica->nume . '"';
-                                                                                                } ?>
+                                                                                                } ?>>
         </div>
 
 
         <div class="form-data">
             <label for="descriere">Descriere</label> <br>
             <textarea id="descriere" name="descriere" placeholder="Descriere..." ><?php
-                                                                                                if (isset($_GET["id"])) {
-                                                                                                    echo 'value="' . $_editPisica->nume . '"';
-                                                                                                } ?></textarea>
+                                                                                echo isset($_GET["id"]) ? $_editPisica->descriere : "";
+                                                                                ?></textarea>
         </div>
 
         <div class="form-data">

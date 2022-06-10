@@ -133,5 +133,25 @@ class Connector
     }
 
 
+    public function deletePisica($id)
+    {
+
+        try {
+            $sql = "select poza from pisici where id=?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$id]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            //unlink($row["poza"]);
+            $sql = "delete from pisici where id = ?";
+            $stmt = $this->connection->prepare($sql);
+            if ($stmt->execute([$id])) {
+                return true;
+            }
+            return false;
+        } catch (Exception $e) {
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+        }
+    }
+
 }
 ?>

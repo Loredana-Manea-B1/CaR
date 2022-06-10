@@ -4,7 +4,9 @@
 
 <head>
     <link rel="stylesheet" href="../styles/listare_pisici.css">
-    <?php include "../php/db-conn.php"; ?>
+    <?php include "../php/db-conn.php"; 
+    ?>
+
     <title>Listare Pisici</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -55,13 +57,14 @@
             <td class='text'>rata</td>
             <td class='text'>".$p->poza."</td>
             <td class='actiune'>
-                <a class='modifica' href='pisica_form.php'></a>
+                <a class='modifica' href='pisica_form.php?id=".$p->getId()."'></a>
                 <a class='sterge'></a>
             </td>
         </tr>";
     }
         ?>
     </table>
+    <script src="../js/listare_pisici.js"></script>
 
 </body>
 

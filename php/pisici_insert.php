@@ -4,7 +4,7 @@ require_once 'db-conn.php';
 
 
 $pisica = new Pisica(NULL, NULL, NULL, NULL, NULL);
-$_POST['id']=-1;
+
 if (!empty($_POST) && isset($_POST['submit'])){
     if (isset($_POST['nume_pisica']) && strlen($_POST['nume_pisica'])){
         $pisica->nume = $_POST['nume_pisica'];
