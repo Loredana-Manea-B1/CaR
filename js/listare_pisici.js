@@ -36,7 +36,7 @@ function delete_data(p) {
 
 window.onload = function() {
     var container = document.getElementById("lista_pisici");
-    fetch("http://localhost/pages-html/listare_pisici")
+    fetch("http://localhost/pages-html/listare_pisici.php")
         .then((response) => response.text())
         .then((data) => {
             console.log(data);

@@ -9,6 +9,7 @@ require_once '../php/pisici_insert.php';
     <link rel="stylesheet" href="../styles/pisica_form.css">
 
     <title> Admin </title>
+    <script src="../js/fetch.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 </head>

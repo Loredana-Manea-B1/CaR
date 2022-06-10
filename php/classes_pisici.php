@@ -118,9 +118,9 @@ class Connector
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([$pis->getId()]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (strcmp($row["poza"], $pis->poza)) {
+            /*if (strcmp($row["poza"], $pis->poza)) {
                 unlink($row["poza"]);
-            }
+            }*/
 
             $sql = "update pisici set nume = ?, descriere = ?, poza = ? where id = ?";
             $st = $this->connection->prepare($sql);
