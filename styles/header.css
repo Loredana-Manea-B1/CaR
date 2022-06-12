@@ -5,13 +5,21 @@ header {
     width: 100%;
 }
 
-.logo {
-    width: 80%;
-}
-
 .logo img {
     width: 150px;
     height: 150px;
+}
+
+.imag {
+    width: 5vw;
+    height: 5vw;
+}
+
+.meniu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
 }
 
 .button {
