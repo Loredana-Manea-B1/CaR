@@ -1,0 +1,30 @@
+.container {
+    margin: auto;
+}
+
+.bttn {
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.text_intr {
+    margin: auto;
+    text-align: center;
+    color: #001524;
+    font-size: 1.5vw;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 1%;
+}
+
+@media screen and (max-width: 1075px) {
+    .text_intr {
+        font-size: 2.791vw;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .text_intr {
+        font-size: 4.301vw;
+    }
+}

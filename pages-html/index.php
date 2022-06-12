@@ -5,15 +5,18 @@
     <title>Pariuri</title>
     <link rel="stylesheet" href="../styles/pag1.css">
     <link rel="stylesheet" href="../styles/header.css">
+    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Choose your own style!">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../js/modal.js"></script>
 </head>
 
 <body>
-
+    
     <div class="modal-plata">
         <div class="continut">
 
@@ -34,13 +37,14 @@
                         <input type="number" id="suma" name="suma" value="100"><br>
                     </form>
                 </div>
-                <a class="butoane" href="payPage.html" target=”_blank”> Continuati catre pagina de plata </a>
+                <a class="butoane" href="payPage.html" target=”_blank”> Pariati </a>
             </div>
         </div>
     </div>
 
 
     <main>
+        
 
 
         <header>

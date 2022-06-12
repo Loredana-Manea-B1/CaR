@@ -233,7 +233,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    /* display: none;*/
+    display: none;
 }
 
 .continut {
