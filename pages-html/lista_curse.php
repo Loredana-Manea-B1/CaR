@@ -44,12 +44,13 @@
         </tr>
         <?php
         foreach($test_curse as $c){
-
+            $pisica1 = $connector->get_1_pisica($c->p1);
+            $pisica2 = $connector->get_1_pisica($c->p2);
         echo"
         <tr>
             <td class='text'>".$c->getId()."</td>
-            <td class='text'>".$c->p1."</td>
-            <td class='text'>".$c->p2."</td>
+            <td class='text'>".$pisica1->nume."</td>
+            <td class='text'>".$pisica2->nume."</td>
             <td class='text'>".$c->data_cursa."</td>
             <td class='text'>".$c->data_limita."</td>
             <td class='text'>".$c->castigator."</td>

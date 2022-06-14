@@ -94,6 +94,9 @@ class Connector
 
     public function insereazaCursa(Cursa &$cursa)
     {
+        $sql = "SET FOREIGN_KEY_CHECKS=0;";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
         $sql = "insert into curse (id_pisica1, id_pisica2, data_cursa, data_limita, castigator) values(?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator]);
