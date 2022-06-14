@@ -76,7 +76,7 @@ class Connector
     public function getCurse(){
         try {
             $curse = [];
-            $sql = "SELECT c.id AS id, pis1.nume AS p1, pis2.nume AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id";
+            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id";
             // folosim prepared statements pentru a preveni sql injections
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
@@ -88,6 +88,8 @@ class Connector
             echo "error";
         }
     }
+
+        
     
 
     public function insereazaCursa(Cursa &$cursa)
@@ -105,7 +107,7 @@ class Connector
             $stmt = $this->connection->prepare($sql);
             if ($stmt->execute([$id])) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                return new Pisica($row['id'], $row['id_pisica1'], $row['id_pisica2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+                return new Cursa($row['id'], $row['id_pisica1'], $row['id_pisica2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
             } else {
                 return NULL;
             }
