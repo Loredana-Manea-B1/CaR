@@ -5,18 +5,21 @@
     <title>Pariuri</title>
     <link rel="stylesheet" href="../styles/pag1.css">
     <link rel="stylesheet" href="../styles/header.css">
+    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Choose your own style!">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 </head>
 
 <body>
-
+    
     <div class="modal-plata">
         <div class="continut">
-
+        <a class="buton_inchidere close">&times;</a>
             <div class="info_pisica">
                 <p class="nume_modal"> Tomi </p>
                 <p class="rata_modal">Rata de castig: 100%</p>
@@ -34,18 +37,25 @@
                         <input type="number" id="suma" name="suma" value="100"><br>
                     </form>
                 </div>
-                <a class="butoane" href="payPage.html" target=”_blank”> Continuati catre pagina de plata </a>
+                <a class="butoane" href="payPage.html" target=”_blank”> Pariati </a>
+                
             </div>
         </div>
     </div>
 
 
     <main>
+        
 
 
         <header>
             <div class="logo">
                 <a href="#"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
+            </div>
+            <div class = "meniu">   
+            <a href="./istoric.html" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>
+            <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
+            <a href="./help.html" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
             </div>
             <div class=" button">
                 <a href="#" class="btn">Log in</a>
@@ -66,7 +76,7 @@
                     <p class="data_limita">Data limita pentru pariere: 13:04.2022</p>
                 </div>
                 <div class="tichet">
-                    <div class="concurent1">
+                    <div class="concurent concurent1">
                         <div class="img1">
                             <img src="../poze_tw/1.png" alt="Poza pisica">
                         </div>
@@ -75,7 +85,7 @@
                             <p class="rata">Rata de castig: 100%</p>
                         </div>
                     </div>
-                    <div class="concurent2">
+                    <div class="concurent concurent2">
                         <div class="img2">
                             <img src="../poze_tw/2.png" alt="Poza pisica">
                         </div>
@@ -217,7 +227,7 @@
                 </div>
             </div>
         </div>
-
+        <script src="../js/modal.js"></script>
 
 
     </main>

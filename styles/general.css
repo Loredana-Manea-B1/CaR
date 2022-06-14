@@ -1,0 +1,54 @@
+.butoane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 50px;
+    font-size: 1.5rem;
+    margin: 32px;
+    background-color: #15616D;
+    color: #FFECD1;
+    border-radius: 30px;
+    transition: trasform 0.4s ease;
+}
+
+.btn:hover {
+    background-color: #001524;
+}
+
+.alert {
+    font-size: 2.5vw;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    background-color: gray;
+    color: black;
+    justify-content: center;
+    height: 80px;
+    align-items: center;
+}
+
+.danger {
+    background-color: rgb(211, 107, 107);
+    color: darkred;
+}
+
+.success {
+    background-color: rgb(105, 221, 140);
+    color: darkgreen;
+}
+
+.info {
+    background-color: lightgray;
+    color: gray;
+}
+
+@media screen and (max-width: 500px) {
+    .btn {
+        display: block;
+    }
+}
