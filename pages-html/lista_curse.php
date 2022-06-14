@@ -3,6 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="../styles/listare_pisici.css">
+    <?php include "../php/db-conn.php"; 
+    ?>
     <title>Listare curse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -13,11 +15,7 @@
     <div class="optiuni">
         <div class="adaugare">
             <p>Adauga cursa</p>
-            <a class="add" href="form_cursa.html"></a>
-        </div>
-        <div class="cautare">
-            <p>Cauta cursa: </p>
-            <input type="text" placeholder="Search..">
+            <a class="add" href="form_cursa.php"></a>
         </div>
     </div>
     <table id="lista_utilizatori">
@@ -44,18 +42,24 @@
                 Actiune
             </th>
         </tr>
+        <?php
+        foreach($test_curse as $c){
+
+        echo"
         <tr>
-            <td class="text"> Id </td>
-            <td class="text">Id</td>
-            <td class="text">Id</td>
-            <td class="text">Data</td>
-            <td class="text">Data</td>
-            <td class="text">id</td>
-            <td class="actiune">
-                <a class="modifica" href="admin_form_pisici.php?id=${produs.id}"></a>
-                <a class="sterge"></a>
+            <td class='text'>".$c->getId()."</td>
+            <td class='text'>".$c->p1."</td>
+            <td class='text'>".$c->p2."</td>
+            <td class='text'>".$c->data_cursa."</td>
+            <td class='text'>".$c->data_limita."</td>
+            <td class='text'>".$c->castigator."</td>
+            <td class='actiune'>
+                <a class='modifica' href='form_cursa.php?id=".$c->getId()."'></a>
+                <a class='sterge'></a>
             </td>
-        </tr>
+        </tr>";
+    }
+        ?>
     </table>
 
 </body>

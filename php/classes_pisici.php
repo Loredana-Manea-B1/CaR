@@ -27,6 +27,38 @@ class Pisica
     }
 }
 
+
+
+class Cursa
+{
+    public $p1;
+    public $p2;
+    public $data_cursa;
+    public $data_limita;
+    public $castigator;
+
+    private $id;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($val)
+    {
+        $this->id = $val;
+    }
+
+    public function __construct($id, $p1, $p2, $data_cursa, $data_limita, $castigator)
+    {
+        $this->id = $id;
+        $this->p1 = $p1;
+        $this->p2 = $p2;
+        $this->data_cursa = $data_cursa;
+        $this->data_limita = $data_limita;
+        $this->castigator = $castigator;
+    }
+}
+
 class Connector
 {
     private $connection;
@@ -40,6 +72,49 @@ class Connector
     {
         return $this->connection;
     }
+
+    public function getCurse(){
+        try {
+            $curse = [];
+            $sql = "SELECT c.id AS id, pis1.nume AS p1, pis2.nume AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id";
+            // folosim prepared statements pentru a preveni sql injections
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $curse[] = new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+            }
+            return $curse;
+        } catch (Exception $e) {
+            echo "error";
+        }
+    }
+    
+
+    public function insereazaCursa(Cursa &$cursa)
+    {
+        $sql = "insert into curse (id_pisica1, id_pisica2, data_cursa, data_limita, castigator) values(?,?,?,?,?)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator]);
+    }
+
+
+    public function get_1_cursa($id)
+    {
+        try {
+            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id where c.id=?";
+            $stmt = $this->connection->prepare($sql);
+            if ($stmt->execute([$id])) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                return new Pisica($row['id'], $row['id_pisica1'], $row['id_pisica2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+            } else {
+                return NULL;
+            }
+        } catch (Exception $e) {
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+        }
+    }
+
+
 
     public function getPisici(){
         try {
@@ -154,4 +229,10 @@ class Connector
     }
 
 }
+
+
+
+
+
+
 ?>
