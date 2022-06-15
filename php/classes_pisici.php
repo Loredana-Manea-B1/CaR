@@ -89,14 +89,29 @@ class Connector
         }
     }
 
+    public function getCurseViitoare(){
+        try {
+            $curse = [];
+            $sql = "select c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id WHERE c.data_limita>CURRENT_DATE";
+            // folosim prepared statements pentru a preveni sql injections
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $curse[] = new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+            }
+            return $curse;
+        } catch (Exception $e) {
+            echo "error";
+        }
+    }
+
+
+
         
     
 
     public function insereazaCursa(Cursa &$cursa)
-    {
-        $sql = "SET FOREIGN_KEY_CHECKS=0;";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
+    {   
         $sql = "insert into curse (id_pisica1, id_pisica2, data_cursa, data_limita, castigator) values(?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator]);
@@ -106,11 +121,11 @@ class Connector
     public function get_1_cursa($id)
     {
         try {
-            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id where c.id=?";
+            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id where c.id= ?";
             $stmt = $this->connection->prepare($sql);
             if ($stmt->execute([$id])) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                return new Cursa($row['id'], $row['id_pisica1'], $row['id_pisica2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+                return new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
             } else {
                 return NULL;
             }

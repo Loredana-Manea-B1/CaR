@@ -21,10 +21,6 @@
             <p>Adauga pisica</p>
             <a class="add" href="pisica_form.php"></a>
         </div>
-        <div class="cautare">
-            <p>Cauta pisica: </p>
-            <input type="text" placeholder="Search..">
-        </div>
     </div>
     <table id="lista_pisici">
         <tr>

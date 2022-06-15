@@ -22,13 +22,24 @@ if (!empty($_POST) && isset($_POST['submit'])){
                         $cursa->data_limita = $_POST['dlimita'];
                     }
                     if(isset($_POST['castigator']) && strlen($_POST['castigator'])>0){
-                        $cursa->castigator = $_POST['castigator'];}
+                        if($_POST['castigator'] != $cursa->p1 || $_POST['castigator'] != $cursa->p1) alert("castigatorul trebuie sa fie concurent", "danger");
+                        else{
+                        $cursa->castigator = $_POST['castigator'];
+                    }
+
+                    }
+                    else{
+                        $cursa->castigator = NULL;
+                    }
                     if (isset($_POST['id']) && $_POST['id'] > 0) { 
                             $cursa->setId($_POST['id']);
                             //$status = $connector->updateCursa($cursa); 
+                            echo $cursa->p1;
+                            echo $cursa->p2;
                             alert("Cursa editata cu succes!", "success");
                         } else if ($_POST['id'] == -1) { 
                             echo $cursa->p1;
+                            echo $cursa->p2;
                             $connector->insereazaCursa($cursa); 
                             alert("Cursa inserata cu succes!", "success");
                         } else {

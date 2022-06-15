@@ -53,7 +53,9 @@ require_once '../php/pisici_insert.php';
 
         <div class="form-data">
             <label for="poza">Imagine</label><br>
-            <input type="file" accept="image/*" name="poza" id="poza">
+            <input type="file" accept="image/*" name="poza" id="poza"><?php
+                                                                                echo isset($_GET["id"]) ? $_editPisica->poza : "";
+                                                                                ?>
         </div>
         <input type="number" hidden id="id-input" value="<?= isset($_GET['id']) ? $_GET['id'] : '-1'; ?>">
         <div class="form-data">
