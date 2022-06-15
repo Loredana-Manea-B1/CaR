@@ -51,7 +51,7 @@
             <td class='text'>".$p->getId()."</td>
             <td class='text'>".$p->nume."</td>
             <td class='text'>".$p->descriere."</td>
-            <td class='text'>rata</td>
+            <td class='text'>".$connector->getRata($p->getId())."</td>
             <td class='text'>".$p->poza."</td>
             <td class='actiune'>
                 <a class='modifica' href='pisica_form.php?id=".$p->getId()."'></a>

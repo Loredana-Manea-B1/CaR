@@ -18,22 +18,37 @@
 
 <body>
     
-    <div class="modal-plata">
-        <div class="continut">
-        <a class="buton_inchidere close">&times;</a>
+    
+<?php
+        foreach($test_curse as $c)
+        {   
+            
+            $pisica1 = $connector->get_1_pisica($c->p1);
+            $pisici[] = $pisica1;
+            $pisica2 = $connector->get_1_pisica($c->p2);
+            $pisici[]=$pisica2;
+            
+        }
+        foreach($pisici as $pis1){
+            echo $pis1->nume;
+            echo'
+            <div class="modal-plata">
+            <div class="continut">
+            <a class="buton_inchidere close">&times;</a>
             <div class="info_pisica">
-                <p class="nume_modal"> Tomi </p>
-                <p class="rata_modal">Rata de castig: 100%</p>
+                <p class="nume_modal"> '.$pis1->nume.' </p>
+                <p class="rata_modal">Rata de castig: '.$connector->getRata($pis1->getId()).'</p>
                 <a href="pagina_pisica.html" target="_blank">
                     <div class="img_modal">
-                        <img src="../poze_tw/1.png" alt="Poza pisica">
+                        <img src="'.$pis1->poza.'" alt="Poza pisica">
                     </div>
                 </a>
 
             </div>
             <div class="suma_plata">
                 <div class="formular">
-                    <form action="/pagina_plata.html" target="_blank">
+                    <form method="POST" enctype="multipart/form-data" action="/pagina_plata.html" target="_blank">
+                    <input type="number" hidden id="id-input" value="">
                         <label for="suma">Introduceti suma pe care doriti sa o pariati:</label><br>
                         <input type="number" id="suma" name="suma" value="100"><br>
                     </form>
@@ -42,7 +57,11 @@
                 
             </div>
         </div>
-    </div>
+    </div>';
+        }
+        ?>
+
+
 
 
     <main>

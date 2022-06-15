@@ -89,6 +89,23 @@ class Connector
         }
     }
 
+    public function getRata($id){
+        $sql = "SELECT COUNT(*) as win FROM curse WHERE castigator=?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $castiguri = $row['win'];
+        }
+        $sql = "SELECT COUNT(*) as number FROM curse";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $total = $row['number'];
+        }
+        $rata = $castiguri*100/$total;
+        return floor($rata);
+    }
+
     public function getCurseViitoare(){
         try {
             $curse = [];
