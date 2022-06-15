@@ -29,10 +29,10 @@
             $pisici[]=$pisica2;
             
         }
+        
         foreach($pisici as $pis1){
-            echo $pis1->nume;
             echo'
-            <div class="modal-plata">
+            <div class="modal-plata" name='.$pis1->nume.'>
             <div class="continut">
             <a class="buton_inchidere close">&times;</a>
             <div class="info_pisica">
@@ -111,8 +111,8 @@
                             <img src='".$pisica1->poza."' alt='Poza pisica'>
                         </div>
                         <div class='text'>
-                            <p class='nume'>".$pisica1->nume."</p>
-                            <p class='rata'>Rata de castig: 100%</p>
+                            <p class='nume' name=".$pisica1->nume.">".$pisica1->nume."</p>
+                            <p class='rata'>Rata de castig: ".$connector->getRata($pisica1->getId())."%</p>
                         </div>
                     </div>
                     <div class='concurent concurent2'>
@@ -120,8 +120,8 @@
                             <img src='".$pisica2->poza."' alt='Poza pisica'>
                         </div>
                         <div class='text'>
-                            <p class='nume'>".$pisica2->nume."</p>
-                            <p class='rata'>Rata de castig:</p>
+                            <p class='nume' name=".$pisica2->nume.">".$pisica2->nume."</p>
+                            <p class='rata'>Rata de castig: ".$connector->getRata($pisica2->getId())."%</p>
                         </div>
                     </div>
                 </div>

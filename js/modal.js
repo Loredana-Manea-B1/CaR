@@ -1,20 +1,26 @@
 var modale = document.getElementsByClassName("modal-plata");
-
-var i;
+var butoane = document.getElementsByClassName("concurent");
+var spanuri = document.getElementsByClassName("close");
 
 
 for (i = 0; i < modale.length; i++) {
-    var modal = document.getElementsByClassName("modal-plata")[i];
 
-    var btn = document.getElementsByClassName("concurent")[i];
-
-    var span = document.getElementsByClassName("close")[i];
+    var btn = butoane[i];
+    var span = spanuri[i];
+    var modal = modale[i];
     span.onclick = function() {
-        modal.style.display = "none";
+        this.parentElement.parentElement.style.display = "none";
     }
     btn.onclick = function() {
-        modal.style.display = "flex";
-        console.log("sal");
+        var nume = this.childNodes[3].childNodes[1].childNodes[0].nodeValue;
+        for (i = 0; i < modale.length; i++) {
+            numem = modale[i].getAttribute("name");
+            if (nume === numem) {
+                modale[i].style.display = "flex";
+                return;
+            }
+        };
     }
+
 
 }
