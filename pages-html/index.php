@@ -38,7 +38,7 @@
             <div class="info_pisica">
                 <p class="nume_modal"> '.$pis1->nume.' </p>
                 <p class="rata_modal">Rata de castig: '.$connector->getRata($pis1->getId()).'</p>
-                <a href="pagina_pisica.html" target="_blank">
+                <a href="pagina_pisica.php?id='.$pis1->getId().'" target="_blank">
                     <div class="img_modal">
                         <img src="'.$pis1->poza.'" alt="Poza pisica">
                     </div>
@@ -48,6 +48,7 @@
             <div class="suma_plata">
                 <div class="formular">
                     <form method="POST" enctype="multipart/form-data" action="/pagina_plata.html" target="_blank">
+                    <input type="number" hidden id="id-input" value="">
                     <input type="number" hidden id="id-input" value="">
                         <label for="suma">Introduceti suma pe care doriti sa o pariati:</label><br>
                         <input type="number" id="suma" name="suma" value="100"><br>
@@ -78,7 +79,7 @@
             <a href="./help.html" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
             </div>
             <div class=" button">
-                <a href="#" class="btn">Log in</a>
+                <a href="./index.php" class="btn">Log in</a>
             </div>
         </header>
 
