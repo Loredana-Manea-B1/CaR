@@ -19,9 +19,7 @@
         $_editCursa = $connector->get_1_cursa($_GET['id']);
         $pisica1 = $connector->get_1_pisica($_editCursa->p1);
         $pisica2 = $connector->get_1_pisica($_editCursa->p2);
-        if($_editCursa->castigator != NULL){
-        $winner = $connector->get_1_pisica($_editCursa->castigator);
-        }
+        
         if ($_editCursa == NULL) {
             echo "<div class='alert danger'><strong>Danger! </strong> Pisica inexistenta! </div>";
             exit;
@@ -82,9 +80,14 @@
                 <option value="">Alege</option>
                 <?php  foreach($test as $castig){
                     ?>
-                    <option value="'<?= $castig->getId() ?>'"<?php if (isset($_GET["id"]) && strcmp($castig->getId(), $winner->getId()) == 0) {
-                                                        echo " selected ";
-                                                    } ?>> <?= $castig->nume; ?></option>
+                    <option value="'<?= $castig->getId() ?>'"<?php 
+                    if($_editCursa->castigator != NULL){
+                        $winner = $connector->get_1_pisica($_editCursa->castigator);
+                        if (isset($_GET["id"]) && strcmp($castig->getId(), $winner->getId()) == 0) {
+                            echo " selected ";
+                        } 
+                        }
+                    ?>> <?= $castig->nume; ?></option>
                 <?php  }   ?>
                 
 
