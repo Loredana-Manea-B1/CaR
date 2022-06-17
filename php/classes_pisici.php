@@ -31,8 +31,8 @@ class Pisica
 
 class Cursa
 {
-    public $p1;
-    public $p2;
+    public int $p1;
+    public int $p2;
     public $data_cursa;
     public $data_limita;
     public $castigator;
@@ -48,7 +48,7 @@ class Cursa
         $this->id = $val;
     }
 
-    public function __construct($id, $p1, $p2, $data_cursa, $data_limita, $castigator)
+    public function __construct($id, int $p1, int $p2, $data_cursa, $data_limita, $castigator)
     {
         $this->id = $id;
         $this->p1 = $p1;
@@ -56,6 +56,33 @@ class Cursa
         $this->data_cursa = $data_cursa;
         $this->data_limita = $data_limita;
         $this->castigator = $castigator;
+    }
+}
+
+
+class Pariu
+{
+    public $id_pisica;
+    public $id_cursa;
+    public $suma;
+
+    private $id;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($val)
+    {
+        $this->id = $val;
+    }
+
+    public function __construct($id, $id_pisica, $id_cursa, $suma)
+    {
+        $this->id = $id;
+        $this->id_pisica = $id_pisica;
+        $this->id_cursa = $id_cursa;
+        $this->$suma = $suma;
     }
 }
 
@@ -71,6 +98,13 @@ class Connector
     public function getConnection()
     {
         return $this->connection;
+    }
+
+
+    public function insereazaPariu(Pariu $pariu){
+        $sql = "INSERT INTO pariuri(id_pisica, id_cursa, suma) VALUES (?, ?, ?)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$pariu->id_pisica, $pariu->id_cursa, $pariu->suma]);
     }
 
     public function getCurse(){
@@ -151,6 +185,11 @@ class Connector
 
     public function insereazaCursa(Cursa &$cursa)
     {   
+        $aux = $cursa->p1;
+        settype($aux, "int");
+        echo $aux." ";
+        echo $cursa->p1;
+        echo (int)($cursa->p2);
         $sql = "insert into curse (id_pisica1, id_pisica2, data_cursa, data_limita, castigator) values(?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator]);
@@ -160,7 +199,7 @@ class Connector
     public function get_1_cursa($id)
     {
         try {
-            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id where c.id= ?";
+            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator FROM curse WHERE id= ?";
             $stmt = $this->connection->prepare($sql);
             if ($stmt->execute([$id])) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -285,6 +324,20 @@ class Connector
         } catch (Exception $e) {
             echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
         }
+    }
+
+    public function toint(&$s){
+         $rez = 0;
+
+         foreach(str_split($s) as $l){
+            if($l>='0' && $l<='9'){
+                $rez*=10;
+                $rez+=$l-'0';
+            }
+         }
+
+         return $rez;
+
     }
 
 }

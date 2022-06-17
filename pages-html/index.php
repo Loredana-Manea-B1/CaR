@@ -5,7 +5,9 @@
     <title>Pariuri</title>
     <link rel="stylesheet" href="../styles/pag1.css">
     <link rel="stylesheet" href="../styles/header.css">
-    <?php include "../php/db-conn.php"; 
+    <link rel="stylesheet" href="../styles/general.css">
+    <?php 
+    require_once "../php/pariu_insert.php";
     ?>
 
     <meta charset="UTF-8">
@@ -25,11 +27,12 @@
             
             $pisica1 = $connector->get_1_pisica($c->p1);
             $pisici[] = $pisica1;
+            $idc[] = $c->getId();
             $pisica2 = $connector->get_1_pisica($c->p2);
             $pisici[]=$pisica2;
-            
+            $idc[] = $c->getId();
         }
-        
+        $i = 0;
         foreach($pisici as $pis1){
             echo'
             <div class="modal-plata" name='.$pis1->nume.'>
@@ -37,7 +40,7 @@
             <a class="buton_inchidere close">&times;</a>
             <div class="info_pisica">
                 <p class="nume_modal"> '.$pis1->nume.' </p>
-                <p class="rata_modal">Rata de castig: '.$connector->getRata($pis1->getId()).'</p>
+                <p class="rata_modal">Rata de castig: '.$connector->getRata($pis1->getId()).'%</p>
                 <a href="pagina_pisica.php?id='.$pis1->getId().'" target="_blank">
                     <div class="img_modal">
                         <img src="'.$pis1->poza.'" alt="Poza pisica">
@@ -47,18 +50,26 @@
             </div>
             <div class="suma_plata">
                 <div class="formular">
-                    <form method="POST" enctype="multipart/form-data" action="/pagina_plata.html" target="_blank">
-                    <input type="number" hidden id="id-input" value="">
-                    <input type="number" hidden id="id-input" value="">
+                    <form method="POST" enctype="multipart/form-data">
+                    
+                    <input type="number" name="id-pisica" hidden class="id-pisica" id="id-pisica'.$i.'" value="'.$pis1->getId().'">
+                    <input type="number" name="id-cursa" hidden class="id-cursa" id = "id-cursa'.$i.'"value="'.$idc[$i].'">
+                    <div class= "form-data">
                         <label for="suma">Introduceti suma pe care doriti sa o pariati:</label><br>
                         <input type="number" id="suma" name="suma" value="100"><br>
+                        </div>
+
+                        <div class = "form-data">
+                        <input type="submit" id="submit'.$i.'" name="submit" class="butoane" value="Pariati">
+                        </div>
                     </form>
                 </div>
-                <a class="butoane" href="payPage.html" target=”_blank”> Pariati </a>
+                
                 
             </div>
         </div>
     </div>';
+    $i++;
         }
         ?>
 
