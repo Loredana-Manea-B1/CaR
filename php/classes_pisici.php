@@ -125,13 +125,19 @@ class Connector
 
     public function getCursePisica($id){
         try{
+        $curse = NULL;
         $sql = "SELECT id, id_pisica1 as p1, id_pisica2 as p2, data_cursa, data_limita, castigator FROM curse WHERE (id_pisica1 = ? OR id_pisica2= ?) AND castigator IS NOT NULL";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id, $id]);
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $curse[] = new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
         }
-        return $curse;
+
+
+        if($curse == NULL){
+            return;
+        }
+        else return $curse;
     }
     catch (Exception $e){
         echo "error";

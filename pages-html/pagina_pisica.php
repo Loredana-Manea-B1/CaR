@@ -62,10 +62,13 @@
             </div>
 
             <?php 
-                $curse = $connector->getCursePisica($_GET['id']);
-                if ($curse == NULL){
-                    echo "tzeapa";
+                if($connector->getCursePisica($_GET['id'])==NULL) {
+                    $curse = NULL;
+                    echo "<p class = 'anunt'> Aceasta pisica nu a participat la nicio cursa inca! </p>";
                 }
+                
+                else{
+                $curse = $connector->getCursePisica($_GET['id']);
                 foreach($curse as $c)
                 {
 
@@ -73,6 +76,7 @@
                     $pisica1 = $connector->get_1_pisica($c->p1);
                     $pisica2 = $connector->get_1_pisica($c->p2);
                     $castigator = $connector->get_1_pisica($c->castigator);
+                    
 
                     echo '
                     <div class="info_cursa">
@@ -82,16 +86,56 @@
                     </div>
     
                     <div class="tichet">
-                        <div class="concurent1">
-                            <div class="img1">
+                        <div ';
+                        
+                        if($castigator == $pisica1){
+                            echo " class = 'concurent1'";
+                        }
+                        else echo " class = 'concurent2'";
+
+
+                        
+                        
+                        echo '>
+                            <div  ';
+                        
+                            if($castigator == $pisica1){
+                                echo " class = 'poza1'";
+                            }
+                            else echo " class = 'poza2'";
+    
+    
+                            
+                            
+                            echo '>
                                 <img src="'.$pisica1->poza.'" alt="Poza pisica">
                             </div>
                             <div class="text">
                                 <p class="nume">'.$pisica1->nume.'</p>
                             </div>
                         </div>
-                        <div class="concurent2">
-                            <div class="img2">
+                        <div  ';
+                        
+                        if($castigator == $pisica2){
+                            echo " class = 'concurent1'";
+                        }
+                        else echo " class = 'concurent2'";
+
+
+                        
+                        
+                        echo '>
+                            <div  ';
+                        
+                            if($castigator == $pisica1){
+                                echo " class = 'poza1'";
+                            }
+                            else echo " class = 'poza2'";
+    
+    
+                            
+                            
+                            echo '>
                                 <img src="'.$pisica2->poza.'" alt="Poza pisica">
                             </div>
                             <div class="text">
@@ -105,6 +149,7 @@
                     
                     ';
                 }
+            }
 
                
 
