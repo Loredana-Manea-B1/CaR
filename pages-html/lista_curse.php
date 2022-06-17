@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../styles/listare_pisici.css">
     <?php include "../php/db-conn.php"; 
     ?>
+    
     <title>Listare curse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -62,6 +63,8 @@
     }
         ?>
     </table>
+
+    <script src="../js/listare_curse.js"></script>
 
 </body>
 

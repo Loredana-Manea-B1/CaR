@@ -1,5 +1,5 @@
 function dialog() {
-    if (confirm("Esti sigur ca vrei sa stergi pisica?")) {
+    if (confirm("Esti sigur ca vrei sa stergi cursa?")) {
         delete_data(this.parentElement.parentElement);
     }
 }
@@ -8,7 +8,7 @@ function dialog() {
 function delete_data(p) {
     parinte = document.getElementById("sterge");
     fetch(
-            "http://localhost/php/pisici_delete.php?id=" +
+            "http://localhost/php/curse_delete.php?id=" +
             p.childNodes[1].innerHTML, {
                 method: "GET",
             }
@@ -35,7 +35,7 @@ function delete_data(p) {
 
 
 window.onload = function() {
-    var container = document.getElementById("lista_pisici");
+    var container = document.getElementById("lista_curse");
     var s = document.querySelectorAll(".sterge");
     for (i = 0; i < s.length; i++) {
         s[i].onclick = dialog;

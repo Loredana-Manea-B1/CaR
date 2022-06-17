@@ -110,7 +110,7 @@ class Connector
     public function getCurse(){
         try {
             $curse = [];
-            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id";
+            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c";
             // folosim prepared statements pentru a preveni sql injections
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
@@ -142,15 +142,14 @@ class Connector
 
     public function getCurseViitoare(){
         try {
-            $curse = [];
-            $sql = "select c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c JOIN pisici as pis1 ON c.id_pisica1=pis1.id JOIN pisici as pis2 on c.id_pisica2=pis2.id WHERE c.data_limita>CURRENT_DATE";
-            // folosim prepared statements pentru a preveni sql injections
+            $viit = [];
+            $sql = "SELECT id, id_pisica1, id_pisica2, data_cursa, data_limita, castigator FROM curse WHERE data_limita>CURRENT_DATE";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $curse[] = new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+                $viit[] = new Cursa($row['id'], $row['id_pisica1'], $row['id_pisica2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
             }
-            return $curse;
+            return $viit;
         } catch (Exception $e) {
             echo "error";
         }
@@ -185,21 +184,30 @@ class Connector
 
     public function insereazaCursa(Cursa &$cursa)
     {   
-        $aux = $cursa->p1;
-        settype($aux, "int");
-        echo $aux." ";
-        echo $cursa->p1;
-        echo (int)($cursa->p2);
         $sql = "insert into curse (id_pisica1, id_pisica2, data_cursa, data_limita, castigator) values(?,?,?,?,?)";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator]);
     }
 
 
+    public function deleteCursa($id){
+        try {
+            $sql = "delete from curse where id = ?";
+            $stmt = $this->connection->prepare($sql);
+            if ($stmt->execute([$id])) {
+                return true;
+            }
+            return false;
+        } catch (Exception $e) {
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+        }
+    }
+
+
     public function get_1_cursa($id)
     {
         try {
-            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator FROM curse WHERE id= ?";
+            $sql = "SELECT id, id_pisica1 as p1, id_pisica2 as p2, data_cursa, data_limita, castigator from curse WHERE id= ?";
             $stmt = $this->connection->prepare($sql);
             if ($stmt->execute([$id])) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -213,12 +221,26 @@ class Connector
     }
 
 
+    public function updateCursa(&$cursa)
+    {
+        try {
+
+            $sql = "update curse set id_pisica1 = ?, id_pisica2 = ?, data_cursa = ?, data_limita = ?, castigator = ? where id = ?";
+            $st = $this->connection->prepare($sql);
+            $st->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator, $cursa->getId()]);
+            return ["Produs editat cu succes!", "success"];
+        } catch (Exception $e) {
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+        }
+        return ["A aparut o eroare sau produsul nu exista in baza de date!", "danger"];
+    }
+
+
 
     public function getPisici(){
         try {
             $pisici = [];
             $sql = "select pisici.id as id, pisici.nume as nume, pisici.descriere as descriere, pisici.poza as poza from pisici";
-            // folosim prepared statements pentru a preveni sql injections
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -300,7 +322,7 @@ class Connector
             $st->execute([$pis->nume,  $pis->descriere, $pis->poza, $pis->getId()]);
             return ["Produs editat cu succes!", "success"];
         } catch (Exception $e) {
-            //echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
         }
         return ["A aparut o eroare sau produsul nu exista in baza de date!", "danger"];
     }

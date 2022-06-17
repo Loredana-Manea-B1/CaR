@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="../styles/pisica_form.css">
+    <link rel="stylesheet" href="../styles/general.css">
     <title> Adaugare cursa </title>
     <?php
         require_once '../php/curse_insert.php';
@@ -17,8 +18,8 @@
     
 <?php if (isset($_GET['id'])) {
         $_editCursa = $connector->get_1_cursa($_GET['id']);
-        $pisica1 = $connector->get_1_pisica($_editCursa->p1);
-        $pisica2 = $connector->get_1_pisica($_editCursa->p2);
+        $pisica1 = $connector->get_1_pisica($connector->toint($_editCursa->p1));
+        $pisica2 = $connector->get_1_pisica($connector->toint($_editCursa->p2));
         
         if ($_editCursa == NULL) {
             echo "<div class='alert danger'><strong>Danger! </strong> Pisica inexistenta! </div>";
@@ -99,8 +100,10 @@
             <input type="submit" id="submit" name="submit" value="<?php echo isset($_GET['id']) ? 'Editează' : 'Adaugă' ?>">
         </div>
     </form>
-    <button onclick="location.href = 'lista_curse.php';">Listare</button>
-    <button onclick="location.href = 'admin.html';">Home</button>
+    <div class="butoane">
+    <button class="btn" onclick="location.href = 'lista_curse.php';">Listare</button>
+    <button class="btn" onclick="location.href = 'admin.html';">Home</button>
+                    </div>
 </body>
 
 </html>

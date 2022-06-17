@@ -22,7 +22,7 @@
     
     
 <?php
-        foreach($test_curse as $c)
+        foreach($test_viit as $c)
         {   
             
             $pisica1 = $connector->get_1_pisica($c->p1);
@@ -105,7 +105,7 @@
 
 
         <?php
-        foreach($test_curse as $c)
+        foreach($test_viit as $c)
         {
         
             $pisica1 = $connector->get_1_pisica($c->p1);
@@ -145,6 +145,7 @@
         ?>
         </div>
         <script src="../js/modal.js"></script>
+        <script src="../js/alert_index.js"></script>
 
 
     </main>

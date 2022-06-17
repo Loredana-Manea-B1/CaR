@@ -1,11 +1,10 @@
 <?php
 
-use function PHPSTORM_META\type;
 
 require_once 'db-conn.php';
 
 
-$cursa = new Cursa(NULL, 0, 0, NULL, NULL, NULL);
+$cursa = new Cursa(NULL, 0, 0, NULL, NULL, 0);
 if (!empty($_POST) && isset($_POST['submit'])){
     if (isset($_POST['pisica1']) && strlen($_POST['pisica1'])>0){
         $cursa->p1 = $connector->toint(($_POST['pisica1']));
@@ -24,9 +23,9 @@ if (!empty($_POST) && isset($_POST['submit'])){
                         $cursa->data_limita = $_POST['dlimita'];
                     }
                     if(isset($_POST['castigator']) && strlen($_POST['castigator'])>0){
-                        if($_POST['castigator'] != $cursa->p1 || $_POST['castigator'] != $cursa->p1) alert("castigatorul trebuie sa fie concurent", "danger");
+                        if($connector->toint(($_POST['castigator'])) != $cursa->p1 && $connector->toint(($_POST['castigator'])) != $cursa->p2) alert("castigatorul trebuie sa fie concurent", "danger");
                         else{
-                        $cursa->castigator = $_POST['castigator'];
+                            $cursa->castigator = $connector->toint(($_POST['castigator']));;
                     }
 
                     }
@@ -35,7 +34,7 @@ if (!empty($_POST) && isset($_POST['submit'])){
                     }
                     if (isset($_POST['id']) && $_POST['id'] > 0) { 
                             $cursa->setId($_POST['id']);
-                            //$status = $connector->updateCursa($cursa);
+                            $status = $connector->updateCursa($cursa);
                             alert("Cursa editata cu succes!", "success");
                         } else if ($_POST['id'] == -1) { 
                             
@@ -46,9 +45,9 @@ if (!empty($_POST) && isset($_POST['submit'])){
                         }
                     }
                 
-                else alert("data limita", "danger");
+                else alert("Selectati data limita!", "danger");
             }
-            else alert("data cursa!", "danger");
+            else alert("Selectati data cursei!", "danger");
             
         }
         else{
