@@ -9,7 +9,7 @@ define('DB_NAME', 'cat');
 $link = mysqli_connect(DB_SERVER, DB_USERNAME,DB_PASSWORD,DB_NAME);
  
 // Define variables and initialize with empty values
-$nume =$parola = $confirm_parola = "";
+$nume =$pariu=$parola = $confirm_parola = "";
 $nume_err = $parola_err = $confirm_parola_err = "";
  
 // Processing form data when form is submitted
@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($nume_err) && empty($parola_err) && empty($confirm_parola_err)  ){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO user_base (nume,parola) VALUES (?,?)";
+        $sql = "INSERT INTO user (nume,parola) VALUES (?,?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -82,8 +82,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Set parameters
             
             $param_nume = $nume;
-            $param_parola = $parola;
-        
+            $param_parola =password_hash($parola, PASSWORD_DEFAULT);
+         
 
             
             // Attempt to execute the prepared statement
@@ -128,7 +128,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="#"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
         </div>
         <div class=" button">
-            <a href="Login.html" class="btn">Log in</a>
+            <a href="login_php.php" class="btn">Log in</a>
         </div>
     </header>
 

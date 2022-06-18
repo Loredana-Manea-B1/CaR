@@ -13,7 +13,7 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location:../pages-html/pagina_pisica.html");
+    header("location:../pages-html/istoric.html");
     exit;
 }
 // Define variables and initialize with empty values
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($nume_err) && empty($parola_err)){
         // Prepare a select statement
-        $sql = "SELECT id,nume,parola FROM user_base WHERE nume = ?";
+        $sql = "SELECT id,nume,parola FROM user WHERE nume = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -59,9 +59,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if username exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $nume, $parola);
+                    mysqli_stmt_bind_result($stmt, $id, $nume, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($parola, $parola)){
+                        if(password_verify($parola,$hashed_password)){
                             // Password is correct, so start a new session
                             session_start();
                             
@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["nume"] = $nume;                            
                             
                             // Redirect user to welcome page
-                            header("location:./pages-html/pagina_pisica.html");
+                            header("location:register.php");
                         } else{
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid nume sau parola.";
