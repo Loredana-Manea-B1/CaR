@@ -86,6 +86,8 @@ class Pariu
     }
 }
 
+
+
 class Connector
 {
     private $connection;
@@ -350,6 +352,39 @@ class Connector
             echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
         }
     }
+
+
+    public function getPariuri(){
+        try {
+            $pariuri = [];
+            $sql = "select id, id_pisica, id_cursa, suma from pariuri";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $pariuri[] = new Pariu($row['id'], $row['id_pisica'], $row['id_cursa'], $row['suma']);
+            }
+            return $pariuri;
+        } catch (Exception $e) {
+            echo "error";
+        }
+    }
+
+
+
+    public function getUserPariu($id){
+        $sql = "select u.id as id from user u JOIN asociere a on u.id = a.id_user JOIN pariuri p on a.id_pariu = p.id WHERE p.id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $user = $row['id'];
+        }
+        if($user == NULL){
+            return;
+        }
+        else return $user;
+    }
+
+
 
     public function toint(&$s){
          $rez = 0;
