@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="../styles/pisica_form.css">
-    <title> Adaugare user </title>
+    <title> Edit user </title>
     <script src="./assets/js/fetch.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 
 <body>
 
-    <h3> Adauga user </h3>
+    <h3> Modifica user </h3>
 
     <form method="POST" enctype="multipart/form-data" >
         <div class="form-data">
@@ -31,7 +31,7 @@
         
         <input type="number" hidden id="id-input" value="<?= isset($_GET['id']) ? $_GET['id'] : '-1'; ?>">
         <div class="form-data">
-            <input type="submit" id="submit" name="submit" value="Adauga" action="lista_utilizatori.html">
+            <input type="submit" id="submit" name="submit" value="Modifica" action="lista_utilizatori.html">
         </div>
     </form>
     <button onclick="location.href = 'lista_curse.html';">Listare</button>
