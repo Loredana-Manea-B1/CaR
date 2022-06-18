@@ -130,9 +130,9 @@ class Connector
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $castiguri = $row['win'];
         }
-        $sql = "SELECT COUNT(*) as number FROM curse";
+        $sql = "SELECT COUNT(*) as number FROM curse WHERE id_pisica1 = ? OR id_pisica2 = ?";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([$id, $id]);
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $total = $row['number'];
         }
