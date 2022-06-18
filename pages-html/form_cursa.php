@@ -68,11 +68,15 @@
     </div>
         <div class="form-data">
             <label for="dcursa">Data Cursei</label><br>
-            <input type="date" name="dcursa" id="dcursa">
+            <input type="date" name="dcursa" id="dcursa" value="<?php if (isset($_GET["id"])) {
+                                                        echo $_editCursa->data_cursa;
+                                                    } ?>">
         </div>
         <div class="form-data">
             <label for="dlimita">Data Limită</label><br>
-            <input type="date" name="dlimita" id="dlimita">
+            <input type="date" name="dlimita" id="dlimita" value="<?php if (isset($_GET["id"])) {
+                                                        echo $_editCursa->data_limita;
+                                                    } ?>">
         </div>
         
         <div class="form-data">
