@@ -1,18 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Source+Sans+Pro:wght@300&display=swap');
-
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
 body {
-    
     background-color: #FFECD1;
 }
 
@@ -21,10 +20,6 @@ header {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-}
-
-.logo {
-    width: 80%;
 }
 
 .logo img {
@@ -37,7 +32,6 @@ header {
     justify-content: right;
     font-family: 'DM Sans', sans-serif;
 }
-
 
 .btn {
     text-decoration: none;
@@ -71,13 +65,11 @@ header {
     font-family: "DM Sans", sans-serif;
 }
 
-
 @media screen and (max-width: 500px) {
     .btn {
-      display: block;
+        display: block;
     }
-  }
-
+}
 
 section {
     display: flex;
@@ -95,7 +87,3 @@ div h3 {
     display: flex;
     justify-content: center;
 }
-
-
-
-
