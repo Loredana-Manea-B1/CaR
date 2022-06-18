@@ -7,7 +7,6 @@ class User {
     private $id;
     private $parola;
     private $admin;
-    private $pariu;
 
     public function getId()
     {
@@ -17,13 +16,13 @@ class User {
     {
         $this->id = $val;
     }
-    public function __construct($id, $nume, $parola, $pariu, $admin)
+    public function __construct($id, $nume, $parola, $admin)
     {
         $this->id = $id;
         $this->nume = $nume;
         $this->parola = $parola;
         $this->admin = $admin;
-        $this->pariu = $pariu;
+       
 
     }
 }
@@ -43,12 +42,12 @@ class Connector {
     public function getUser(){
         try {
             $user = [];
-            $sql = "select user.id as id, user.nume as nume, user.parola as parola, user.pariu as pariu, user.admin as admin from user";
+            $sql = "select user.id as id, user.nume as nume, user.parola as parola, user.admin as admin from user";
             // folosim prepared statements pentru a preveni sql injections
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $user[] = new User($row['id'], $row['nume'], $row['parola'], $row['pariu'], $row['admin']);
+                $user[] = new User($row['id'], $row['nume'], $row['parola'], $row['admin']);
             }
             return $user;
         } catch (Exception $e) {
@@ -59,11 +58,11 @@ class Connector {
     public function get_user($id)
     {
         try {
-            $sql = "select user.id as id, user.nume as nume, user.parola as parola, user.pariu as pariu, user.admin as admin from user WHERE id = ?";
+            $sql = "select user.id as id, user.nume as nume, user.parola as parola, user.admin as admin from user WHERE id = ?";
             $stmt = $this->connection->prepare($sql);
             if ($stmt->execute([$id])) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                return new User($row['id'], $row['nume'], $row['parola'], $row['pariu'], $row['admin']);
+                return new User($row['id'], $row['nume'], $row['parola'],  $row['admin']);
             } else {
                 return NULL;
             }
@@ -73,9 +72,9 @@ class Connector {
     }
     public function insereazaUser(User &$user)
     {
-        $sql = "insert into user(nume, parola, pariu, admin) values(?,?,?,?)";
+        $sql = "insert into user(nume, parola, admin) values(?,?,?)";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$user->nume, $user->parola, $user->pariu, $user->admin]);
+        $stmt->execute([$user->nume, $user->parola, $user->admin]);
     }
     public function deleteUser($id)
     {
@@ -85,7 +84,7 @@ class Connector {
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            //unlink($row["poza"]);
+            
             $sql = "delete from user where id = ?";
             $stmt = $this->connection->prepare($sql);
             if ($stmt->execute([$id])) {
