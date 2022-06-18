@@ -62,6 +62,9 @@
         ?>
     </table>
     <script src="../js/listare_pisici.js"></script>
+    <div class="adaugare">
+            <a class="back" href="admin.html"></a>
+        </div>
 
 </body>
 

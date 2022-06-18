@@ -11,7 +11,7 @@ if(!empty($_POST) && isset($_POST['submit'])){
             if(isset($_POST['suma']) && $_POST['suma']>0){
                 $pariu->suma = $_POST['suma'];
                 $connector->insereazaPariu($pariu);
-                alert("Pariu finalizat cu succes!", "success");
+                echo "Pariu realizat cu succes!";
             }
             else alert("Selectati suma", "danger");
         }

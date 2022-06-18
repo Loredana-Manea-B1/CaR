@@ -29,7 +29,7 @@
 
 <header>
             <div class="logo">
-                <a href="#"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
+                <a href="./index.php"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
             </div>
             <div class = "meniu">   
             <a href="./istoric.html" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>

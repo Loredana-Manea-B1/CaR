@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Pariuri</title>
+    <title>CaR | Pariuri cu pisici</title>
     <link rel="stylesheet" href="../styles/pag1.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/general.css">
@@ -82,7 +82,7 @@
 
         <header>
             <div class="logo">
-                <a href="#"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
+                <a href="./index.php"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
             </div>
             <div class = "meniu">   
             <a href="./istoric.html" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>
@@ -145,7 +145,6 @@
         ?>
         </div>
         <script src="../js/modal.js"></script>
-        <script src="../js/alert_index.js"></script>
 
 
     </main>

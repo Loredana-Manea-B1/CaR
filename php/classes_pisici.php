@@ -136,7 +136,10 @@ class Connector
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $total = $row['number'];
         }
+        if($total!=0){
         $rata = $castiguri*100/$total;
+        }
+        else $rata =0;
         return floor($rata);
     }
 

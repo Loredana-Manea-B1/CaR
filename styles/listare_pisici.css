@@ -39,15 +39,15 @@ h1 {
     width: 100%;
 }
 
-.cautare {
-    padding-bottom: 3vw;
-    display: flex;
-    flex-wrap: wrap;
-    font-family: 'DM Sans', sans-serif;
-}
-
-.cautare>p {
-    padding-right: 1vw;
+.back {
+    height: 7vw;
+    margin-bottom: 3vw;
+    max-width: 7vw;
+    background-image: url("../poze_tw/back.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    width: 100%;
 }
 
 table {
