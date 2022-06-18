@@ -17,6 +17,17 @@ h1 {
     font-family: 'DM Sans', sans-serif;
 }
 
+.descarca {
+    height: 7vw;
+    margin-bottom: 3vw;
+    max-width: 7vw;
+    background-image: url("../poze_tw/download.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    width: 100%;
+}
+
 .add {
     height: 7vw;
     margin-bottom: 3vw;

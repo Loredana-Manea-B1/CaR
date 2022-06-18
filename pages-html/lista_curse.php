@@ -18,6 +18,10 @@
             <p>Adauga cursa</p>
             <a class="add" href="form_cursa.php"></a>
         </div>
+        <div class="adaugare">
+        <p>Export CSV</p>
+        <a class="descarca" href="../php/export_csv.php"></a>
+    </div>
     </div>
     <table id="lista_utilizatori">
         <tr>
@@ -63,7 +67,7 @@
     }
         ?>
     </table>
-
+    
     <script src="../js/listare_curse.js"></script>
 
 </body>
