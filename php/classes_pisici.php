@@ -392,11 +392,11 @@ class Connector
     public function getPariuri(){
         try {
             $pariuri = [];
-            $sql = "select id, id_pisica, id_cursa, suma from pariuri";
+            $sql = "select id, id_pisica, id_cursa, suma as s from pariuri";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $pariuri[] = new Pariu($row['id'], $row['id_pisica'], $row['id_cursa'], $row['suma']);
+                $pariuri[] = new Pariu($row['id'], $row['id_pisica'], $row['id_cursa'], $row['s']);
             }
             return $pariuri;
         } catch (Exception $e) {
@@ -417,6 +417,17 @@ class Connector
             return;
         }
         else return $user;
+    }
+
+
+    public function getSuma($id){
+        $sql = "select suma from pariuri where id = ?";
+        $stmt=$this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $sum = $row['suma'];
+        }
+        return $sum;
     }
 
     public function getUID($nume){

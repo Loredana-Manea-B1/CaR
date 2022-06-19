@@ -27,12 +27,15 @@
             <th>
                 User
             </th>
+            <th>
+                Suma
+            </th>
         </tr>
 
         <?php 
 
         foreach($test_pariuri as $p){
-            
+            $sum = $connector->getSuma($p->getId());
             $pisic = $connector->get_1_pisica($p->id_pisica);
             $uid = $connector->getUserPariu($p->getId());
             echo '
@@ -41,6 +44,7 @@
             <td class="text">'.$pisic->nume.'</td>
             <td class="text">'.$p->id_cursa.'</td>
             <td class="text">'.$uid.'</td>
+            <td class="text">'.$sum.'</td>
         </tr>';
             }
         

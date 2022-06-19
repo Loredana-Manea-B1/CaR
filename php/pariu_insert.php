@@ -9,7 +9,7 @@ if(!empty($_POST) && isset($_POST['submit'])){
         if(isset($_POST['id-cursa']) && $_POST['id-cursa']>0){
             $pariu->id_cursa = $_POST['id-cursa'];
             if(isset($_POST['suma']) && $_POST['suma']>0){
-                $pariu->suma = $_POST['suma'];
+                $pariu->suma = $connector->toint($_POST['suma']);
                 if(isset($_POST['id-user']) && $_POST['id-user']>0){
                     $uid= $_POST['id-user'];
                     $connector->insereazaPariu($pariu, $uid);
