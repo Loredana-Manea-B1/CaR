@@ -3,6 +3,9 @@
 
 <head>
     <link rel="stylesheet" href="../styles/listare_pisici.css">
+    <?php 
+    require_once "../php/db-conn.php";
+    ?>
     <title>Listare Utilizatori</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -10,11 +13,6 @@
 <body>
 
     <h1>Lista Utilizatori</h1>
-    <div class="optiuni">
-        <div class="cautare">
-            <p>Cauta Utilizator: </p>
-            <input type="text" placeholder="Search..">
-        </div>
     </div>
     <table id="lista_utilizatori">
         <tr>
@@ -34,17 +32,25 @@
                 Actiune
             </th>
         </tr>
+
+        <?php 
+        foreach($test_useri as $u){
+            echo '
         <tr>
-            <td class="text"> Id </td>
-            <td class="text">Nume</td>
-            <td class="text">***</td>
-            <td class="text">da/nu</td>
+            <td class="text"> '.$u->getId().' </td>
+            <td class="text"> '.$u->nume.'</td>
+            <td class="text">'.$u->getParola().'</td>
+            <td class="text">'.$u->admin.'</td>
             <td class="actiune">
                 <a class="modifica" href="form_user.html"></a>
                 <a class="sterge"></a>
             </td>
-        </tr>
+        </tr>';
+        }
+        ?>
     </table>
+
+   
 
 </body>
 

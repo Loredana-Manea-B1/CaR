@@ -43,7 +43,6 @@ class Connector {
         try {
             $user = [];
             $sql = "select user.id as id, user.nume as nume, user.parola as parola, user.admin as admin from user";
-            // folosim prepared statements pentru a preveni sql injections
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

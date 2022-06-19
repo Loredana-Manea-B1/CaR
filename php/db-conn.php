@@ -13,3 +13,4 @@ $test = $connector->getPisici();
 $test_curse = $connector->getCurse();
 $test_viit = $connector->getCurseViitoare();
 $test_pariuri = $connector->getPariuri();
+$test_useri = $connector->getUser();
