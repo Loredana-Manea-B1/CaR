@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/general.css">
     <?php 
+    require_once "../php/login_check.php";
     require_once "../php/pariu_insert.php";
     ?>
 
@@ -22,6 +23,8 @@
     
     
 <?php
+
+        $uid = $connector->getUID($nume);
         foreach($test_viit as $c)
         {   
             
@@ -54,6 +57,7 @@
                     
                     <input type="number" name="id-pisica" hidden class="id-pisica" id="id-pisica'.$i.'" value="'.$pis1->getId().'">
                     <input type="number" name="id-cursa" hidden class="id-cursa" id = "id-cursa'.$i.'"value="'.$idc[$i].'">
+                    <input type="number" name="id-user" hidden class="id-user" id = "id-user'.$i.'"value="'.$uid.'">
                     <div class= "form-data">
                         <label for="suma">Introduceti suma pe care doriti sa o pariati:</label><br>
                         <input type="number" id="suma" name="suma" value="100"><br>

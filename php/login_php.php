@@ -13,7 +13,7 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location:../pages-html/istoric.html");
+    header("location:../pages-html/index.php");
     exit;
 }
 // Define variables and initialize with empty values

@@ -103,10 +103,10 @@ class Connector
     }
 
 
-    public function insereazaPariu(Pariu $pariu){
-        $sql = "INSERT INTO pariuri(id_pisica, id_cursa, suma) VALUES (?, ?, ?)";
+    public function insereazaPariu(Pariu $pariu, $uid){
+        $sql = "INSERT INTO pariuri(id_pisica, id_cursa, suma) VALUES (?, ?, ?); insert into asociere(id_pariu, id_user) values (LAST_INSERT_ID(), ?)";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$pariu->id_pisica, $pariu->id_cursa, $pariu->suma]);
+        $stmt->execute([$pariu->id_pisica, $pariu->id_cursa, $pariu->suma, $uid]);
     }
 
     public function getCurse(){
@@ -382,6 +382,19 @@ class Connector
             return;
         }
         else return $user;
+    }
+
+    public function getUID($nume){
+        $sql = "select id from user WHERE nume = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$nume]);
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $uid = $row['id'];
+        }
+        if($uid == NULL){
+            return;
+        }
+        else return $uid;
     }
 
 
