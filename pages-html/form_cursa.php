@@ -86,7 +86,7 @@
                 <?php  foreach($test as $castig){
                     ?>
                     <option value="'<?= $castig->getId() ?>'"<?php 
-                    if($_editCursa->castigator != NULL){
+                    if(isset($_GET["id"]) && $_editCursa->castigator != NULL){
                         $winner = $connector->get_1_pisica($_editCursa->castigator);
                         if (isset($_GET["id"]) && strcmp($castig->getId(), $winner->getId()) == 0) {
                             echo " selected ";
