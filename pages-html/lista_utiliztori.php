@@ -49,6 +49,9 @@
         }
         ?>
     </table>
+    <div class="adaugare">
+            <a class="back" href="admin.html"></a>
+        </div>
 
    
 

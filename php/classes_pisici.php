@@ -86,7 +86,7 @@ class Pariu
     }
 }
 
-
+//clasa madalinei
 class User {
     public $nume;
     public $admin;
