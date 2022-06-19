@@ -51,14 +51,13 @@ body {
     background: none;
     padding: 20px;
     padding-left: 30px;
-    font-weight: 1200;
     font-size: 20px;
     width: 100%;
     transition: 0.2s;
 }
 
 .login__submit {
-    background:#fff;
+    background: #fff;
     font-size: 20px;
     margin-top: 40px;
     padding: 16px 20px;
