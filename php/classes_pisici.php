@@ -27,6 +27,67 @@ class Pisica
     }
 }
 
+
+
+class Cursa
+{
+    public int $p1;
+    public int $p2;
+    public $data_cursa;
+    public $data_limita;
+    public $castigator;
+
+    private $id;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($val)
+    {
+        $this->id = $val;
+    }
+
+    public function __construct($id, int $p1, int $p2, $data_cursa, $data_limita, $castigator)
+    {
+        $this->id = $id;
+        $this->p1 = $p1;
+        $this->p2 = $p2;
+        $this->data_cursa = $data_cursa;
+        $this->data_limita = $data_limita;
+        $this->castigator = $castigator;
+    }
+}
+
+
+class Pariu
+{
+    public $id_pisica;
+    public $id_cursa;
+    public $suma;
+
+    private $id;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($val)
+    {
+        $this->id = $val;
+    }
+
+    public function __construct($id, $id_pisica, $id_cursa, $suma)
+    {
+        $this->id = $id;
+        $this->id_pisica = $id_pisica;
+        $this->id_cursa = $id_cursa;
+        $this->$suma = $suma;
+    }
+}
+
+
+
 class Connector
 {
     private $connection;
@@ -41,11 +102,150 @@ class Connector
         return $this->connection;
     }
 
+
+    public function insereazaPariu(Pariu $pariu){
+        $sql = "INSERT INTO pariuri(id_pisica, id_cursa, suma) VALUES (?, ?, ?)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$pariu->id_pisica, $pariu->id_cursa, $pariu->suma]);
+    }
+
+    public function getCurse(){
+        try {
+            $curse = [];
+            $sql = "SELECT c.id AS id, id_pisica1 AS p1, id_pisica2 AS p2, c.data_cursa as data_cursa, c.data_limita as data_limita, c.castigator as castigator  FROM curse c";
+            // folosim prepared statements pentru a preveni sql injections
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $curse[] = new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+            }
+            return $curse;
+        } catch (Exception $e) {
+            echo "error";
+        }
+    }
+
+    public function getRata($id){
+        $sql = "SELECT COUNT(*) as win FROM curse WHERE castigator=?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $castiguri = $row['win'];
+        }
+        $sql = "SELECT COUNT(*) as number FROM curse WHERE id_pisica1 = ? OR id_pisica2 = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id, $id]);
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $total = $row['number'];
+        }
+        if($total!=0){
+        $rata = $castiguri*100/$total;
+        }
+        else $rata =0;
+        return floor($rata);
+    }
+
+    public function getCurseViitoare(){
+        try {
+            $viit = [];
+            $sql = "SELECT id, id_pisica1, id_pisica2, data_cursa, data_limita, castigator FROM curse WHERE data_limita>CURRENT_DATE";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $viit[] = new Cursa($row['id'], $row['id_pisica1'], $row['id_pisica2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+            }
+            return $viit;
+        } catch (Exception $e) {
+            echo "error";
+        }
+    }
+
+
+    public function getCursePisica($id){
+        try{
+        $curse = NULL;
+        $sql = "SELECT id, id_pisica1 as p1, id_pisica2 as p2, data_cursa, data_limita, castigator FROM curse WHERE (id_pisica1 = ? OR id_pisica2= ?) AND castigator IS NOT NULL";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id, $id]);
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $curse[] = new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+        }
+
+
+        if($curse == NULL){
+            return;
+        }
+        else return $curse;
+    }
+    catch (Exception $e){
+        echo "error";
+    }
+    }
+
+
+
+        
+    
+
+    public function insereazaCursa(Cursa &$cursa)
+    {   
+        $sql = "insert into curse (id_pisica1, id_pisica2, data_cursa, data_limita, castigator) values(?,?,?,?,?)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator]);
+    }
+
+
+    public function deleteCursa($id){
+        try {
+            $sql = "delete from curse where id = ?";
+            $stmt = $this->connection->prepare($sql);
+            if ($stmt->execute([$id])) {
+                return true;
+            }
+            return false;
+        } catch (Exception $e) {
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+        }
+    }
+
+
+    public function get_1_cursa($id)
+    {
+        try {
+            $sql = "SELECT id, id_pisica1 as p1, id_pisica2 as p2, data_cursa, data_limita, castigator from curse WHERE id= ?";
+            $stmt = $this->connection->prepare($sql);
+            if ($stmt->execute([$id])) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                return new Cursa($row['id'], $row['p1'], $row['p2'], $row['data_cursa'], $row['data_limita'], $row['castigator']);
+            } else {
+                return NULL;
+            }
+        } catch (Exception $e) {
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+        }
+    }
+
+
+    public function updateCursa(&$cursa)
+    {
+        try {
+
+            $sql = "update curse set id_pisica1 = ?, id_pisica2 = ?, data_cursa = ?, data_limita = ?, castigator = ? where id = ?";
+            $st = $this->connection->prepare($sql);
+            $st->execute([$cursa->p1, $cursa->p2, $cursa->data_cursa, $cursa->data_limita, $cursa->castigator, $cursa->getId()]);
+            return ["Produs editat cu succes!", "success"];
+        } catch (Exception $e) {
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+        }
+        return ["A aparut o eroare sau produsul nu exista in baza de date!", "danger"];
+    }
+
+
+
     public function getPisici(){
         try {
             $pisici = [];
             $sql = "select pisici.id as id, pisici.nume as nume, pisici.descriere as descriere, pisici.poza as poza from pisici";
-            // folosim prepared statements pentru a preveni sql injections
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -127,7 +327,7 @@ class Connector
             $st->execute([$pis->nume,  $pis->descriere, $pis->poza, $pis->getId()]);
             return ["Produs editat cu succes!", "success"];
         } catch (Exception $e) {
-            //echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
+            echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
         }
         return ["A aparut o eroare sau produsul nu exista in baza de date!", "danger"];
     }
@@ -153,5 +353,58 @@ class Connector
         }
     }
 
+
+    public function getPariuri(){
+        try {
+            $pariuri = [];
+            $sql = "select id, id_pisica, id_cursa, suma from pariuri";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $pariuri[] = new Pariu($row['id'], $row['id_pisica'], $row['id_cursa'], $row['suma']);
+            }
+            return $pariuri;
+        } catch (Exception $e) {
+            echo "error";
+        }
+    }
+
+
+
+    public function getUserPariu($id){
+        $sql = "select u.id as id from user u JOIN asociere a on u.id = a.id_user JOIN pariuri p on a.id_pariu = p.id WHERE p.id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $user = $row['id'];
+        }
+        if($user == NULL){
+            return;
+        }
+        else return $user;
+    }
+
+
+
+    public function toint(&$s){
+         $rez = 0;
+
+         foreach(str_split($s) as $l){
+            if($l>='0' && $l<='9'){
+                $rez*=10;
+                $rez+=$l-'0';
+            }
+         }
+
+         return $rez;
+
+    }
+
 }
+
+
+
+
+
+
 ?>

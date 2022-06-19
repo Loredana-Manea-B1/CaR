@@ -130,6 +130,11 @@ body {
     justify-content: center;
 }
 
+.anunt {
+    text-align: center;
+    font-size: 1.2vw;
+}
+
 .info_cursa {
     background-color: #15616D;
     width: 480px;

@@ -21,10 +21,6 @@
             <p>Adauga pisica</p>
             <a class="add" href="pisica_form.php"></a>
         </div>
-        <div class="cautare">
-            <p>Cauta pisica: </p>
-            <input type="text" placeholder="Search..">
-        </div>
     </div>
     <table id="lista_pisici">
         <tr>
@@ -55,7 +51,7 @@
             <td class='text'>".$p->getId()."</td>
             <td class='text'>".$p->nume."</td>
             <td class='text'>".$p->descriere."</td>
-            <td class='text'>rata</td>
+            <td class='text'>".$connector->getRata($p->getId())."</td>
             <td class='text'>".$p->poza."</td>
             <td class='actiune'>
                 <a class='modifica' href='pisica_form.php?id=".$p->getId()."'></a>
@@ -66,6 +62,9 @@
         ?>
     </table>
     <script src="../js/listare_pisici.js"></script>
+    <div class="adaugare">
+            <a class="back" href="admin.html"></a>
+        </div>
 
 </body>
 
