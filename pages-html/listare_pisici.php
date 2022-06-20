@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../styles/listare_pisici.css">
     <link rel="stylesheet" href="../styles/header.css">
     <?php include "../php/db-conn.php"; 
+    require_once "../php/login_check.php";
+    $uid = intval($connector->getUID($nume));
+    $admin = $connector->isAdmin($uid);
     ?>
 
     <title>Listare Pisici</title>
@@ -13,7 +16,11 @@
 </head>
 
 <body>
-    
+<?php
+    if($admin!=1){
+        header("location:../pages-html/index.php");
+    }
+    ?>
 
     <h1>Lista pisici</h1>
     <div class="optiuni">

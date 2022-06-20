@@ -1,5 +1,8 @@
 <?php
 require_once '../php/pisici_insert.php';
+require_once "../php/login_check.php";
+    $uid = intval($connector->getUID($nume));
+    $admin = $connector->isAdmin($uid);
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +18,12 @@ require_once '../php/pisici_insert.php';
 </head>
 
 <body>
+
+<?php
+    if($admin!=1){
+        header("location:../pages-html/index.php");
+    }
+    ?>
 
 <?php if (isset($_GET['id'])) {
         $_editPisica = $connector->get_1_pisica($_GET['id']);
