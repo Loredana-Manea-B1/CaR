@@ -83,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             if(mysqli_stmt_execute($stmt)){
                 
-                header("location: login_php.php");
+                header("location: login.php");
             } else{
                 echo "Oops!Ceva a mers gresit. Va rugam incercati mai tarziu.";
             }

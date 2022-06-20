@@ -84,24 +84,26 @@
         
 
 
-        <header>
-            <div class="logo">
-                <a href="./index.php"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
-            </div>
-            <div class = "meniu">   
-            <a href="./istoric.html" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>
-            <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
+    <header>
+        <div class="logo">
+            <a href="./index.php"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
+        </div>
+        <div class="meniu">
+            <a href="./istoric.php" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>
+
+            <?php
+            $uid = intval($connector->getUID($nume));
+            $admin = $connector->isAdmin($uid);
+            if($admin){
+                echo '
+            <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>';
+            }?>
             <a href="./help.php" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
-            </div>
-               <div class=" button">
+        </div>
+        <div class=" button">
             <a href="../php/logout.php" class="btn">Log out</a>
             </div>
-           
-         
-
-
-            
-        </header>
+    </header>
 
         <h1 class="titlu_pagina"> Pariati pentru cursele viitoare! </h1>
         <div class="desc">
