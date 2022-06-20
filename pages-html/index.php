@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="../styles/general.css">
     <?php 
     require_once "../php/pariu_insert.php";
-    
-    if(isset($_SESSION["nume"])){
-    $nume = $_SESSION["nume"];
-     }
-
-    else  
-    {header("location:../pages-html/welcome.html");
-    exit;}
+    require_once "../php/login_check.php";
 
     ?>
 
@@ -104,7 +97,7 @@
             $admin = $connector->isAdmin($uid);
             if($admin){
                 echo '
-            <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>';
+            <a href="./admin.php" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>';
             }?>
             <a href="./help.php" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
         </div>

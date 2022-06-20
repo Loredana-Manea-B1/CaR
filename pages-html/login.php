@@ -20,7 +20,7 @@
             <a href="#"><img src="../poze_tw/logo.png" class="img-fluid" alt="logo"></a>
         </div>
         <div class=" button">
-            <a href="Login.html" class="btn">Log in</a>
+            <a href="login.php" class="btn">Log in</a>
         </div>
     </header>
 

@@ -4,6 +4,9 @@
 <head>
     <link rel="stylesheet" href="../styles/listare_pisici.css">
     <?php include "../php/db-conn.php"; 
+    require_once "../php/login_check.php";
+    $uid = intval($connector->getUID($nume));
+    $admin = $connector->isAdmin($uid);
     ?>
     
     <title>Listare curse</title>
@@ -11,6 +14,11 @@
 </head>
 
 <body>
+<?php
+    if($admin!=1){
+        header("location:../pages-html/index.php");
+    }
+    ?>
 
     <h1>Lista curse</h1>
     <div class="optiuni">
@@ -68,7 +76,7 @@
         ?>
     </table>
     <div class="adaugare">
-            <a class="back" href="admin.html"></a>
+            <a class="back" href="admin.php"></a>
         </div>
     <script src="../js/listare_curse.js"></script>
 

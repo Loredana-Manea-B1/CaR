@@ -4,12 +4,20 @@
 <head>
     <link rel="stylesheet" href="../styles/listare_pisici.css">
     <?php include "../php/db-conn.php"; 
+    require_once "../php/login_check.php";
+    $uid = intval($connector->getUID($nume));
+    $admin = $connector->isAdmin($uid);
     ?>
     <title>Lista pariuri</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
+    <?php
+    if($admin!=1){
+        header("location:../pages-html/index.php");
+    }
+    ?>
 
     <h1>Lista Pariuri</h1>
     
@@ -52,7 +60,7 @@
         ?>
     </table>
     <div class="adaugare">
-            <a class="back" href="admin.html"></a>
+            <a class="back" href="admin.php"></a>
         </div>
 
 </body>

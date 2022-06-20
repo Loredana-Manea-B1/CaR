@@ -7,6 +7,9 @@
     <title> Adaugare cursa </title>
     <?php
         require_once '../php/curse_insert.php';
+        require_once "../php/login_check.php";
+    $uid = intval($connector->getUID($nume));
+    $admin = $connector->isAdmin($uid);
     ?>
     <script src="../js/fetch_form_cursa.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +17,11 @@
 </head>
 
 <body>
-
+<?php
+    if($admin!=1){
+        header("location:../pages-html/index.php");
+    }
+    ?>
     
 <?php if (isset($_GET['id'])) {
         $_editCursa = $connector->get_1_cursa($_GET['id']);
@@ -106,7 +113,7 @@
     </form>
     <div class="butoane">
     <button class="btn" onclick="location.href = 'lista_curse.php';">Listare</button>
-    <button class="btn" onclick="location.href = 'admin.html';">Home</button>
+    <button class="btn" onclick="location.href = 'admin.php';">Home</button>
                     </div>
 </body>
 

@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../styles/listare_pisici.css">
     <link rel="stylesheet" href="../styles/header.css">
     <?php include "../php/db-conn.php"; 
+    require_once "../php/login_check.php";
+    $uid = intval($connector->getUID($nume));
+    $admin = $connector->isAdmin($uid);
     ?>
 
     <title>Listare Pisici</title>
@@ -13,7 +16,11 @@
 </head>
 
 <body>
-    
+<?php
+    if($admin!=1){
+        header("location:../pages-html/index.php");
+    }
+    ?>
 
     <h1>Lista pisici</h1>
     <div class="optiuni">
@@ -63,7 +70,7 @@
     </table>
     <script src="../js/listare_pisici.js"></script>
     <div class="adaugare">
-            <a class="back" href="admin.html"></a>
+            <a class="back" href="admin.php"></a>
         </div>
 
 </body>

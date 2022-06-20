@@ -27,12 +27,12 @@
             if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]===true) 
             { 
              ?>
-             <a href="./istoric.html" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>
+             <a href="./istoric.php" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>
              <?php
             }
               ?>
          
-             <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
+             <a href="./admin.php" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
                 
            
             <a href="./help.php" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
