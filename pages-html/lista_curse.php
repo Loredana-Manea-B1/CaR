@@ -68,7 +68,7 @@
         ?>
     </table>
     <div class="adaugare">
-            <a class="back" href="admin.html"></a>
+            <a class="back" href="admin.php"></a>
         </div>
     <script src="../js/listare_curse.js"></script>
 

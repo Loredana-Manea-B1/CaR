@@ -50,7 +50,7 @@
         ?>
     </table>
     <div class="adaugare">
-            <a class="back" href="admin.html"></a>
+            <a class="back" href="admin.php"></a>
         </div>
 
    

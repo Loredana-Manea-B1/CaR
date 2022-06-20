@@ -63,7 +63,7 @@
     </table>
     <script src="../js/listare_pisici.js"></script>
     <div class="adaugare">
-            <a class="back" href="admin.html"></a>
+            <a class="back" href="admin.php"></a>
         </div>
 
 </body>

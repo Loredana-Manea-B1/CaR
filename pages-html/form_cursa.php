@@ -106,7 +106,7 @@
     </form>
     <div class="butoane">
     <button class="btn" onclick="location.href = 'lista_curse.php';">Listare</button>
-    <button class="btn" onclick="location.href = 'admin.html';">Home</button>
+    <button class="btn" onclick="location.href = 'admin.php';">Home</button>
                     </div>
 </body>
 
