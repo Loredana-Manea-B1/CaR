@@ -8,6 +8,9 @@ if(isset($_SESSION["nume"])){
 
 }
 
-else echo " ";
+else  {
+    header("location:../pages-html/welcome.html");
+    exit;
+};
 
 ?>

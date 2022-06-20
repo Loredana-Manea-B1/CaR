@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="../styles/general.css">
     <?php 
     require_once "../php/pariu_insert.php";
-    
-    if(isset($_SESSION["nume"])){
-    $nume = $_SESSION["nume"];
-     }
-
-    else  
-    {header("location:../pages-html/welcome.html");
-    exit;}
+    require_once "../php/login_check.php";
 
     ?>
 

@@ -49,6 +49,11 @@
     <div class="pariuri">
     <?php
     $pariuri_user = $connector->getPariurifromUser($uid);
+    if($pariuri_user==NULL) {
+        echo "<p class = 'anunt'> Inca nu ati pariat pentru nicio cursa! </p>";
+    }
+
+    else{
     
     foreach($pariuri_user as $par){
         $curse[] = $connector->get_1_cursa($par->id_cursa);
@@ -102,7 +107,7 @@
         ';
         $i++;
     }
-
+    }
     ?>
 
     

@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="../styles/pisica.css">
     <link rel="stylesheet" href="../styles/header.css">
     <?php include "../php/db-conn.php";
-     
-    if(isset($_SESSION["nume"])){
-    $nume = $_SESSION["nume"];
-     }
-
-     else  
-    {header("location:../pages-html/welcome.html");
-    exit;}
+    require_once "../php/login_check.php";
 
     ?>
     <meta name="description" content="Choose your own style!">

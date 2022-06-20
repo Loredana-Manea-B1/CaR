@@ -235,6 +235,11 @@ img {
     font-family: 'DM Sans', sans-serif;
 }
 
+.anunt {
+    text-align: center;
+    font-size: 1.2vw;
+}
+
 @media screen and (max-width: 1075px) {
     .desc {
         height: 9.302vw;
