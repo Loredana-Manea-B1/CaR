@@ -538,7 +538,7 @@ class Connector
         try {
             $sql = "delete from asociere where id_user = ?;  delete from user where id = ?;";
             $stmt = $this->connection->prepare($sql);
-            if ($stmt->execute([$id, $id, $id])) {
+            if ($stmt->execute([$id, $id])) {
                 return true;
             }
             return false;
