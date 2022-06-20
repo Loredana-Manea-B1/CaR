@@ -7,7 +7,16 @@
     <title>Istoricul pisicii</title>
     <link rel="stylesheet" href="../styles/pisica.css">
     <link rel="stylesheet" href="../styles/header.css">
-    <?php include "../php/db-conn.php"; 
+    <?php include "../php/db-conn.php";
+     
+    if(isset($_SESSION["nume"])){
+    $nume = $_SESSION["nume"];
+     }
+
+     else  
+    {header("location:../pages-html/welcome.html");
+    exit;}
+
     ?>
     <meta name="description" content="Choose your own style!">
     <meta name="viewport" content="width=device-width, initial-scale=1">

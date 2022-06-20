@@ -7,8 +7,16 @@
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/general.css">
     <?php 
-    require_once "../php/login_check.php";
     require_once "../php/pariu_insert.php";
+    
+    if(isset($_SESSION["nume"])){
+    $nume = $_SESSION["nume"];
+     }
+
+    else  
+    {header("location:../pages-html/welcome.html");
+    exit;}
+
     ?>
 
     <meta charset="UTF-8">
@@ -90,7 +98,10 @@
             </div>
             <div class = "meniu">   
             <a href="./istoric.html" target=”_blank”><img src="../poze_tw/account.svg" class="imag" alt="account"></a>
-            <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
+             
+                <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
+          
+            
             <a href="./help.php" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
             </div>
                <div class=" button">

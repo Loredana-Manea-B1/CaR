@@ -32,9 +32,10 @@
             }
               ?>
          
+             <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
+                
            
-            <a href="./admin.html" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
-            <a href="./help.html" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
+            <a href="./help.php" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
         </div>
          
         <?php
