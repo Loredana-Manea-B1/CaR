@@ -72,6 +72,7 @@ textarea {
 
 input[type=submit] {
     height: unset;
+    width: auto;
 }
 
 @media screen and (max-width:768px) {

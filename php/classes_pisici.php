@@ -536,15 +536,22 @@ class Connector
     {
 
         try {
-            $sql = "delete from user where id = ?";
+            $sql = "delete from asociere where id_user = ?;  delete from user where id = ?;";
             $stmt = $this->connection->prepare($sql);
-            if ($stmt->execute([$id])) {
+            if ($stmt->execute([$id, $id, $id])) {
                 return true;
             }
             return false;
         } catch (Exception $e) {
             echo "<div class='alert danger'><strong>Danger! </strong> " . $e->getMessage() . "</div>";
         }
+    }
+
+    public function updateUser(User &$user){
+        $sql = "update user set admin = ? where id = ?";
+        $st = $this->connection->prepare($sql);
+        $st->execute([$user->admin, $user->getId()]);
+        return ["Produs editat cu succes!", "success"];
     }
 
 }
