@@ -419,6 +419,8 @@ class Connector
         else return $user;
     }
 
+    public function getPariuUser($id){}
+
 
     public function getSuma($id){
         $sql = "select suma from pariuri where id = ?";
@@ -428,6 +430,24 @@ class Connector
             $sum = $row['suma'];
         }
         return $sum;
+    }
+
+    public function getPariurifromUser($id){
+        try {
+            $pariuri = [];
+            $sql = "select p.id as id, p.id_pisica as id_pisica, p.id_cursa as id_cursa, p.suma as suma FROM pariuri p JOIN asociere a ON p.id = a.id_pariu JOIN user u ON u.id = a.id_user WHERE u.id = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$id]);
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $pariuri[] = new Pariu($row['id'], $row['id_pisica'], $row['id_cursa'], $row['suma']);
+            }
+            if($pariuri == NULL){
+                return;
+            }
+            else return $pariuri;
+        } catch (Exception $e) {
+            echo "error";
+        }
     }
 
     public function getUID($nume){
@@ -441,6 +461,20 @@ class Connector
             return;
         }
         else return $uid;
+    }
+
+
+    public function isAdmin($id){
+        $sql = "select admin from user WHERE id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        if($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $admin = $row['admin'];
+        }
+        if($admin == NULL){
+            return;
+        }
+        else return $admin;
     }
 
 
