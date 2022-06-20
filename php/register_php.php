@@ -4,15 +4,10 @@ define('DB_SERVER', 'localhost');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','');
 define('DB_NAME', 'cat');
- 
-
 $link = mysqli_connect(DB_SERVER, DB_USERNAME,DB_PASSWORD,DB_NAME);
- 
-
 $nume =$pariu=$parola = $confirm_parola = "";
 $nume_err = $parola_err = $confirm_parola_err = "";
  
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     
