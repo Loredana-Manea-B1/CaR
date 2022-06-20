@@ -51,8 +51,8 @@
             <td class="text">'.$u->getParola().'</td>
             <td class="text">'.$u->admin.'</td>
             <td class="actiune">
-                <a class="modifica" href="form_user.html"></a>
-                <a class="sterge"></a>
+            <a class="modifica" href="form_user.php?id='.$u->getId().'"></a>
+            <a class="sterge"></a>
             </td>
         </tr>';
         }
@@ -61,7 +61,7 @@
     <div class="adaugare">
             <a class="back" href="admin.php"></a>
         </div>
-
+        <script src="../js/listare_useri.js"></script>
    
 
 </body>

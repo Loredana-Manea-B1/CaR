@@ -47,7 +47,7 @@ $uid = intval($connector->getUID($nume));
     </div>
     <section>
         <div class="menu">
-            <a href="lista_utiliztori.php" class="btn2">Utilizatori</a>
+            <a href="lista_utilizatori.php" class="btn2">Utilizatori</a>
         </div>
         <div class="menu">
             <a href="listare_pisici.php" class="btn2">Pisici</a>
