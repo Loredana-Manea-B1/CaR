@@ -46,9 +46,7 @@ $uid = intval($connector->getUID($nume));
         <h3>Admin</h3>
     </div>
     <section>
-        <div class="menu">
-            <a href="lista_utilizatori.php" class="btn2">Utilizatori</a>
-        </div>
+        
         <div class="menu">
             <a href="listare_pisici.php" class="btn2">Pisici</a>
         </div>
@@ -57,6 +55,9 @@ $uid = intval($connector->getUID($nume));
         </div>
         <div class="menu">
             <a href="lista_pariuri.php" class="btn2">Pariuri</a>
+        </div>
+        <div class="menu">
+            <a href="lista_utilizatori.php" class="btn2">Utilizatori</a>
         </div>
     </section>';}
     else echo "Nu aveti dreptul de acces la aceasta pagina!";

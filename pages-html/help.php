@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <?php 
     require_once "../php/login_check.php";
+    require_once "../php/db-conn.php";
     ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,8 +32,14 @@
              <?php
             }
               ?>
-         
-             <a href="./admin.php" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>
+             <?php
+            $uid = intval($connector->getUID($nume));
+            $admin = $connector->isAdmin($uid);
+            if($admin){
+                echo '
+            <a href="./admin.php" target=”_blank”><img src="../poze_tw/admin.svg" class="imag" alt="admin"></a>';
+            }?>
+            
                 
            
             <a href="./help.php" target=”_blank”><img src="../poze_tw/help.svg" class="imag" alt="help"></a>
@@ -69,9 +76,9 @@
     <div class="container">
         <div class="text_intr">
             <p>Daca aveti intrebari sau sugestii, contactati-ne la urmatoarele adrese de e-mail:</p>
-            <p>@1</p>
-            <p>@2</p>
-            <p>@3</p>
+            <p>@alexandra.ioan.99@gmail.com</p>
+            <p>@loredana.manea@asii.ro</p>
+            <p>@madalinabitiusca32@gmail.com</p>
         </div>
 
         <div class="bttn">
